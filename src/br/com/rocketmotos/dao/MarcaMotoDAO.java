@@ -78,14 +78,14 @@ public class MarcaMotoDAO extends Conexao {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Erro ao alterar em "
+			System.out.println("Erro ao excluir em "
 					+ EntidadeMarcaMoto.NM_TABELA);
 		}
 
 		return retorno;
 	}
 
-	public static ArrayList<EntidadeMarcaMoto> listarTodos() {
+	public static ArrayList<EntidadeMarcaMoto> consultarTodos() {
 
 		String sql = "SELECT * FROM " + EntidadeMarcaMoto.NM_TABELA;
 		ArrayList<EntidadeMarcaMoto> listaRetorno = new ArrayList<EntidadeMarcaMoto>();
@@ -103,7 +103,7 @@ public class MarcaMotoDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao inserir em ");
+			System.out.println("Erro ao consultar em ");
 		}
 
 		return listaRetorno;
@@ -130,7 +130,7 @@ public class MarcaMotoDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao inserir em ");
+			System.out.println("Erro ao consultar em ");
 		}
 
 		return listaRetorno;
@@ -155,7 +155,7 @@ public class MarcaMotoDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao inserir em ");
+			System.out.println("Erro ao consultar em ");
 		}
 
 		return listaRetorno;

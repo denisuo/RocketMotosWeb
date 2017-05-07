@@ -1,7 +1,16 @@
 package br.com.rocketmotos.entidade;
 
-public abstract class EntidadeCliente {
+public class EntidadeCliente {
 
+	public static final String NM_ENTIDADE = EntidadeCliente.class
+			.getSimpleName();
+	public static final String NM_TABELA = "CLIENTE";
+	public static final String NM_COL_NumeroDocumento = "DOCUMENTO_CLIENTE";
+	public static final String NM_COL_Nome = "NOME";
+	public static final String NM_COL_Endereco = "ENDERECO";
+	public static final String NM_COL_Telefone = "TELEFONE";
+	public static final String NM_COL_TipoCliente = "TIPO";
+	
 	private String documento;
 	private String nome;
 	private String endereco;
@@ -48,7 +57,7 @@ public abstract class EntidadeCliente {
 		this.tipoCliente = tipoCliente;
 	}
 
-	public abstract Double getDesconto();
+	//public abstract Double getDesconto();
 
 	@Override
 	public String toString() {

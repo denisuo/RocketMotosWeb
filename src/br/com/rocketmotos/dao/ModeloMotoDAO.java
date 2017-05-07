@@ -95,7 +95,7 @@ public class ModeloMotoDAO extends Conexao {
 		return retorno;
 	}
 
-	public static ArrayList<EntidadeModeloMoto> listarTodos() {
+	public static ArrayList<EntidadeModeloMoto> consultarTodos() {
 
 		String sql = "SELECT * FROM " + EntidadeModeloMoto.NM_TABELA;
 		ArrayList<EntidadeModeloMoto> listaRetorno = new ArrayList<EntidadeModeloMoto>();
