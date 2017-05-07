@@ -5,31 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.com.rocketmotos.entidade.EntidadeMarcaMoto;
-
 public class Conexao {
 
 	public static Connection aConexao = null;
-
-	// try {
-	// Connection connection;
-	// // Load the JDBC driver
-	// String driverName = "org.gjt.mm.mysql.Driver"; // MySQL MM JDBC driver
-	// Class.forName(driverName);
-	//
-	// // Create a connection to the database
-	// String serverName = "localhost";
-	// String mydatabase = "mydatabase";
-	// String url = "jdbc:mysql://" + serverName + "/" + mydatabase; // a JDBC
-	// url
-	// String username = "username";
-	// String password = "password";
-	// connection = DriverManager.getConnection(url, username, password);
-	// } catch (ClassNotFoundException ex) {
-	// // Could not find the database driver<%-- --%>
-	// } catch (SQLException e) {
-	// // Could not connect to the database
-	// }
 
 	public static Connection abrirConexao() {
 

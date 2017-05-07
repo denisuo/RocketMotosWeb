@@ -7,9 +7,11 @@ import java.util.ArrayList;
 
 import br.com.rocketmotos.entidade.EntidadeMarcaMoto;
 
-public class MarcaMotoDAO extends Conexao {
+public class DAOMarcaMoto extends Conexao {
 
-	public MarcaMotoDAO() {
+	private static String NM_ENTIDADE = DAOMarcaMoto.class.getSimpleName();
+
+	public DAOMarcaMoto() {
 
 	}
 
@@ -31,8 +33,7 @@ public class MarcaMotoDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao inserir em "
-					+ EntidadeMarcaMoto.NM_TABELA);
+			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
 
 		return retorno;
@@ -56,19 +57,18 @@ public class MarcaMotoDAO extends Conexao {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Erro ao alterar em "
-					+ EntidadeMarcaMoto.NM_TABELA);
+			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
 
 		return retorno;
 	}
 
-	public boolean excluir(EntidadeMarcaMoto eMarcaMoto) {
+	public static boolean excluir(Integer codigoMarcaMoto) {
 		boolean retorno = false;
 
 		String sql = "DELETE FROM " + EntidadeMarcaMoto.NM_TABELA + " WHERE "
 				+ EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto + " = "
-				+ eMarcaMoto.getCodigo();
+				+ codigoMarcaMoto;
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
@@ -78,8 +78,7 @@ public class MarcaMotoDAO extends Conexao {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Erro ao excluir em "
-					+ EntidadeMarcaMoto.NM_TABELA);
+			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
 
 		return retorno;
@@ -94,16 +93,16 @@ public class MarcaMotoDAO extends Conexao {
 		try {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				EntidadeMarcaMoto marcaMoto = new EntidadeMarcaMoto();
-				marcaMoto.setCodigo(Integer.valueOf(rs
+				EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
+				eMarcaMoto.setCodigo(Integer.valueOf(rs
 						.getString(EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto)));
-				marcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
+				eMarcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
 
-				listaRetorno.add(marcaMoto);
+				listaRetorno.add(eMarcaMoto);
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar em ");
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
 		return listaRetorno;
@@ -121,16 +120,16 @@ public class MarcaMotoDAO extends Conexao {
 		try {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				EntidadeMarcaMoto marcaMoto = new EntidadeMarcaMoto();
-				marcaMoto.setCodigo(Integer.valueOf(rs
+				EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
+				eMarcaMoto.setCodigo(Integer.valueOf(rs
 						.getString(EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto)));
-				marcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
+				eMarcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
 
-				listaRetorno.add(marcaMoto);
+				listaRetorno.add(eMarcaMoto);
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar em ");
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
 		return listaRetorno;
@@ -146,16 +145,16 @@ public class MarcaMotoDAO extends Conexao {
 		try {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				EntidadeMarcaMoto marcaMoto = new EntidadeMarcaMoto();
-				marcaMoto.setCodigo(Integer.valueOf(rs
+				EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
+				eMarcaMoto.setCodigo(Integer.valueOf(rs
 						.getString(EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto)));
-				marcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
+				eMarcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
 
-				listaRetorno.add(marcaMoto);
+				listaRetorno.add(eMarcaMoto);
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar em ");
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
 		return listaRetorno;

@@ -5,9 +5,10 @@ public class EntidadeModeloMoto {
 	public static final String NM_ENTIDADE = EntidadeModeloMoto.class
 			.getSimpleName();
 	public static final String NM_TABELA = "MODELO_MOTO";
+	
 	public static final String NM_COL_CodigoModeloMoto = "MODELO_MOTO_CD";
 	public static final String NM_COL_Nome = "NOME";
-	public static final String NM_COL_CodigoMarcaMoto = "MARCA_MOTO_CD";
+	public static final String NM_COL_CodigoMarcaMoto = EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto;
 	public static final String NM_COL_Cilindrada = "CILINDRADA";
 
 	private int codigoModeloMoto;

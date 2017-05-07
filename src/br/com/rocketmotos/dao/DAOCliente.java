@@ -1,18 +1,17 @@
 package br.com.rocketmotos.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.rocketmotos.entidade.EntidadeCliente;
-import br.com.rocketmotos.entidade.EntidadeCliente;
-import br.com.rocketmotos.entidade.EntidadeModeloMoto;
 
-public class ClienteDAO extends Conexao {
+public class DAOCliente extends Conexao {
 
-	public ClienteDAO() {
+	private static String NM_ENTIDADE = DAOCliente.class.getSimpleName();
+
+	public DAOCliente() {
 
 	}
 
@@ -37,8 +36,7 @@ public class ClienteDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao inserir em "
-					+ EntidadeCliente.NM_TABELA);
+			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
 
 		return retorno;
@@ -65,19 +63,18 @@ public class ClienteDAO extends Conexao {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Erro ao alterar em "
-					+ EntidadeCliente.NM_TABELA);
+			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
 
 		return retorno;
 	}
 
-	public boolean excluir(EntidadeCliente eCliente) {
+	public boolean excluir(String numeroDocumentoCliente) {
 		boolean retorno = false;
 
 		String sql = "DELETE FROM " + EntidadeCliente.NM_TABELA + " WHERE "
 				+ EntidadeCliente.NM_COL_NumeroDocumento + " = "
-				+ eCliente.getDocumento();
+				+ numeroDocumentoCliente;
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
@@ -87,8 +84,7 @@ public class ClienteDAO extends Conexao {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Erro ao excluir em "
-					+ EntidadeCliente.NM_TABELA);
+			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
 
 		return retorno;
@@ -118,7 +114,7 @@ public class ClienteDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar em ");
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
 		return listaRetorno;
@@ -152,7 +148,7 @@ public class ClienteDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar em ");
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
 		return listaRetorno;
@@ -183,7 +179,7 @@ public class ClienteDAO extends Conexao {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar em ");
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
 		return listaRetorno;

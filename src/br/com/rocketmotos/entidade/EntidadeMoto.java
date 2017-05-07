@@ -1,10 +1,21 @@
 package br.com.rocketmotos.entidade;
 
 public class EntidadeMoto {
+
+	public static final String NM_ENTIDADE = EntidadeMoto.class.getSimpleName();
+	public static final String NM_TABELA = "MOTO";
+
+	public static final String NM_COL_PlacaMoto = "PLACA_MOTO";
+	public static final String NM_COL_Ano = "ANO";
+	public static final String NM_COL_Cor = "COR";
+	public static final String NM_COL_NumeroDocumentoCliente = EntidadeCliente.NM_COL_NumeroDocumento;
+	public static final String NM_COL_CodigoModeloMoto = EntidadeModeloMoto.NM_COL_CodigoModeloMoto;
+	public static final String NM_COL_CodigoMarcaMoto = EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto;
+
 	private String placa;
 	private String ano;
 	private String cor;
-	private String documentoCliente;
+	private String numeroDocumentoCliente;
 	private int codigoModeloMoto;
 	private int codigoMarcaMoto;
 
@@ -32,12 +43,12 @@ public class EntidadeMoto {
 		this.cor = cor;
 	}
 
-	public String getDocumentoCliente() {
-		return documentoCliente;
+	public String getNumeroDocumentoCliente() {
+		return numeroDocumentoCliente;
 	}
 
-	public void setDocumentoCliente(String documentoCliente) {
-		this.documentoCliente = documentoCliente;
+	public void setNumeroDocumentoCliente(String documentoCliente) {
+		this.numeroDocumentoCliente = documentoCliente;
 	}
 
 	public int getCodigoModeloMoto() {
@@ -59,7 +70,7 @@ public class EntidadeMoto {
 	@Override
 	public String toString() {
 		return "EntidadeMoto [placa=" + placa + ", ano=" + ano + ", cor=" + cor
-				+ ", documentoCliente=" + documentoCliente
+				+ ", documentoCliente=" + numeroDocumentoCliente
 				+ ", codigoModeloMoto=" + codigoModeloMoto
 				+ ", codigoMarcaMoto=" + codigoMarcaMoto + "]";
 	}

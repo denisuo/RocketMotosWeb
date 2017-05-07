@@ -5,6 +5,7 @@ public class EntidadeMarcaMoto {
 	public static final String NM_ENTIDADE = EntidadeMarcaMoto.class
 			.getSimpleName();
 	public static final String NM_TABELA = "MARCA_MOTO";
+	
 	public static final String NM_COL_CodigoMarcaMoto = "MARCA_MOTO_CD";
 	public static final String NM_COL_Nome = "NOME";
 

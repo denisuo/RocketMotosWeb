@@ -1,19 +1,23 @@
 package br.com.rocketmotos.util;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
-import br.com.rocketmotos.dao.ClienteDAO;
-import br.com.rocketmotos.dao.MarcaMotoDAO;
-import br.com.rocketmotos.dao.ModeloMotoDAO;
+import br.com.rocketmotos.dao.DAOCategoriaProduto;
+import br.com.rocketmotos.dao.DAOMoto;
+import br.com.rocketmotos.dao.DAOProduto;
+import br.com.rocketmotos.entidade.EntidadeCategoriaProduto;
 import br.com.rocketmotos.entidade.EntidadeCliente;
-import br.com.rocketmotos.entidade.EntidadeClientePF;
-import br.com.rocketmotos.entidade.EntidadeMarcaMoto;
-import br.com.rocketmotos.entidade.EntidadeModeloMoto;
+import br.com.rocketmotos.entidade.EntidadeMoto;
+import br.com.rocketmotos.entidade.EntidadeProduto;
 
 
 
 public class Teste {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 //		Double valor = 130.00;
@@ -21,37 +25,23 @@ public class Teste {
 //		Double valorDesconto = clientePJ.getDesconto();
 //		valor = valor + (valor * valorDesconto);
 
-		EntidadeCliente eClientePF = new EntidadeCliente();
-		eClientePF.setDocumento("99999999988");
-		eClientePF.setNome("Cliente teste");
-		eClientePF.setEndereco("Av. Tapajós");
-		eClientePF.setTelefone("8199995588");
-		eClientePF.setTipoCliente(Constantes.Pessoa_PF);
+		EntidadeProduto eProduto = new EntidadeProduto();
+		eProduto.setCodigoProduto("123456789");
+		eProduto.setNome("OLEO LUBRAX 20W50");
+		eProduto.setDescricao("OLEO LUBRAX LUBRAX 20W50");
+		eProduto.setValidade(Date.valueOf("2030-12-15"));
+		eProduto.setCodigoCategoria(2);
+		eProduto.setValor(20.00);
+		eProduto.setQuantidade(100);
 		
-		ClienteDAO clienteDAO = new ClienteDAO();
-		//clienteDAO.incluir(eClientePF);
+		//DAOProduto.incluir(eProduto);
 		
-//		MarcaMotoDAO marcaMotoDao = new MarcaMotoDAO();
-//		marcaMotoDao.incluir(eMarcaMoto);
-		//marcaMotoDao.alterar(eMarcaMoto);
-		//marcaMotoDao.excluir(eMarcaMoto);
+		ArrayList<EntidadeProduto> alProduto = new ArrayList<EntidadeProduto>();
+		alProduto = DAOProduto.consultarTodos();
 		
-		//ModeloMotoDAO modeloMotoDao = new ModeloMotoDAO();
-		//modeloMotoDao.incluir(eModeloMoto);
-		//modeloMotoDao.alterar(eModeloMoto);
-		//modeloMotoDao.excluir(eModeloMoto);
-		
-		ArrayList<EntidadeCliente> alCliente = new ArrayList<EntidadeCliente>();
-//		clienteDAO.alterar(eClientePF);
-//		alCliente = clienteDAO.consultarPorDocumento("12345678989");
-		alCliente = clienteDAO.consultarTodos();
-//		ArrayList<EntidadeModeloMoto> alModeloMoto = modeloMotoDao.listarTodos();
-//		ArrayList<EntidadeModeloMoto> alModeloMoto = modeloMotoDao.consultarPorCilindrada(eModeloMoto.getCilindrada());
-//		ArrayList<EntidadeMarcaMoto> alMarcaMoto = marcaMotoDao.listarTodos();
-		
-		for (EntidadeCliente ec : alCliente) {
+		for (EntidadeProduto ep : alProduto) {
 			
-			System.out.println(ec.toString());
+			System.out.println(ep);
 			
 		}
 	}

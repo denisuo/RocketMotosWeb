@@ -4,7 +4,19 @@ import java.sql.Date;
 
 public class EntidadeProduto {
 
-	private String codigo;
+	public static final String NM_ENTIDADE = EntidadeProduto.class
+			.getSimpleName();
+	public static final String NM_TABELA = "PRODUTO";
+
+	public static final String NM_COL_CodigoProduto = "PRODUTO_CD";
+	public static final String NM_COL_Nome = "NOME";
+	public static final String NM_COL_Descricao = "DESCRICAO";
+	public static final String NM_COL_Validade = "VALIDADE";
+	public static final String NM_COL_CodigoCategoriaProduto = EntidadeCategoriaProduto.NM_COL_CodigoCategoriaProduto;
+	public static final String NM_COL_Valor = "VALOR";
+	public static final String NM_COL_QtdEstoque = "QTD_ESTOQUE";
+
+	private String codigoProduto;
 	private String nome;
 	private String descricao;
 	private Date validade;
@@ -12,12 +24,12 @@ public class EntidadeProduto {
 	private Double valor;
 	private int quantidade;
 
-	public String getCodigo() {
-		return codigo;
+	public String getCodigoProduto() {
+		return codigoProduto;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigoProduto(String codigoProduto) {
+		this.codigoProduto = codigoProduto;
 	}
 
 	public String getNome() {
@@ -70,8 +82,8 @@ public class EntidadeProduto {
 
 	@Override
 	public String toString() {
-		return "EntidadeProduto [codigo=" + codigo + ", nome=" + nome
-				+ ", descricao=" + descricao + ", validade=" + validade
+		return "EntidadeProduto [codigoProduto=" + codigoProduto + ", nome="
+				+ nome + ", descricao=" + descricao + ", validade=" + validade
 				+ ", codigoCategoria=" + codigoCategoria + ", valor=" + valor
 				+ ", quantidade=" + quantidade + "]";
 	}
