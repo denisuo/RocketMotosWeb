@@ -11,6 +11,10 @@ public class EntidadeMarcaMoto {
 
 	private int codigo;
 	private String nome;
+	
+
+	public EntidadeMarcaMoto(){
+	}
 
 	public int getCodigo() {
 		return codigo;
