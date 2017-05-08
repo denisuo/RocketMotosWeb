@@ -15,8 +15,7 @@ public class DAOMoto extends Conexao {
 
 	}
 
-	public static boolean incluir(EntidadeMoto eMoto) {
-		boolean retorno = false;
+	public static void incluir(EntidadeMoto eMoto) {
 
 		String sql = "INSERT INTO " + EntidadeMoto.NM_TABELA + " ("
 				+ EntidadeMoto.NM_COL_PlacaMoto + ", "
@@ -32,19 +31,13 @@ public class DAOMoto extends Conexao {
 		// eMoto.getDocumento()
 		PreparedStatement stmt = getPreparedStatement(sql);
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean alterar(EntidadeMoto eMoto) {
-		boolean retorno = false;
+	public static void alterar(EntidadeMoto eMoto) {
 
 		String sql = "UPDATE " + EntidadeMoto.NM_TABELA + " SET "
 				+ EntidadeMoto.NM_COL_Ano + " = '" + eMoto.getAno() + "', "
@@ -55,36 +48,25 @@ public class DAOMoto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean excluir(String placaMoto) {
-		boolean retorno = false;
+	public static void excluir(String placaMoto) {
 
 		String sql = "DELETE FROM " + EntidadeMoto.NM_TABELA + " WHERE "
 				+ EntidadeMoto.NM_COL_PlacaMoto + " = '" + placaMoto + "' ";
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
 	public static ArrayList<EntidadeMoto> consultarTodos() {

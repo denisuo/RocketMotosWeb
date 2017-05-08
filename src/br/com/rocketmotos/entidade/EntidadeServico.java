@@ -2,17 +2,26 @@ package br.com.rocketmotos.entidade;
 
 public class EntidadeServico {
 
-	private int codigo;
+	public static final String NM_ENTIDADE = EntidadeServico.class
+			.getSimpleName();
+	public static final String NM_TABELA = "SERVICO";
+
+	public static final String NM_COL_CodigoServico = "SERVICO_CD";
+	public static final String NM_COL_Nome = "NOME";
+	public static final String NM_COL_Descricao = "DESCRICAO";
+	public static final String NM_COL_Valor = "VALOR";
+
+	private int codigoServico;
 	private String nome;
 	private String descricao;
 	private Double valor;
 
-	public int getCodigo() {
-		return codigo;
+	public int getCodigoServico() {
+		return codigoServico;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCodigoServico(int codigoServico) {
+		this.codigoServico = codigoServico;
 	}
 
 	public String getNome() {
@@ -41,8 +50,8 @@ public class EntidadeServico {
 
 	@Override
 	public String toString() {
-		return "EntidadeServico [codigo=" + codigo + ", nome=" + nome
-				+ ", descricao=" + descricao + ", valor=" + valor + "]";
+		return "EntidadeServico [codigoServico=" + codigoServico + ", nome="
+				+ nome + ", descricao=" + descricao + ", valor=" + valor + "]";
 	}
 
 }

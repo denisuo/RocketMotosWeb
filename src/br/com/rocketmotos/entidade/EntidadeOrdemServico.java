@@ -3,8 +3,19 @@ package br.com.rocketmotos.entidade;
 import java.sql.Date;
 
 public class EntidadeOrdemServico {
+	
+	public static final String NM_ENTIDADE = EntidadeItemOrdemServico.class
+			.getSimpleName();
+	public static final String NM_TABELA = "ORDEM_SERVICO";
 
-	private int codigo;
+	public static final String NM_COL_CodigoOrdemServico = "ORDEM_SERVICO_CD";
+	public static final String NM_COL_PlacaMoto = EntidadeMoto.NM_COL_PlacaMoto;
+	public static final String NM_COL_Data = "DATA";
+	public static final String NM_COL_IndicadorOrcamento = "INDICADOR_ORCAMENTO";
+	public static final String NM_COL_Valor = "VALOR";
+	public static final String NM_COL_Desconto = "DESCONTO";
+
+	private int codigoOrdemServico;
 	private String placaMoto;
 	private Date data;
 	private String indicadorOrcamento;
@@ -12,11 +23,11 @@ public class EntidadeOrdemServico {
 	private Double desconto;
 
 	public int getCodigo() {
-		return codigo;
+		return codigoOrdemServico;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCodigo(int codigoOrdemServico) {
+		this.codigoOrdemServico = codigoOrdemServico;
 	}
 
 	public String getPlacaMoto() {
@@ -61,7 +72,7 @@ public class EntidadeOrdemServico {
 
 	@Override
 	public String toString() {
-		return "EntidadeOrdemServico [codigo=" + codigo + ", placaMoto=" + placaMoto
+		return "EntidadeOrdemServico [codigoOrdemServico=" + codigoOrdemServico + ", placaMoto=" + placaMoto
 				+ ", data=" + data + ", indicadorOrcamento="
 				+ indicadorOrcamento + ", valor=" + valor + ", desconto="
 				+ desconto + "]";

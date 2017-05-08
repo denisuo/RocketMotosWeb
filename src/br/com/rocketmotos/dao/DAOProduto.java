@@ -16,8 +16,7 @@ public class DAOProduto extends Conexao {
 
 	}
 
-	public static boolean incluir(EntidadeProduto eProduto) {
-		boolean retorno = false;
+	public static void incluir(EntidadeProduto eProduto) {
 
 		String sql = "INSERT INTO " + EntidadeProduto.NM_TABELA + " ("
 				+ EntidadeProduto.NM_COL_CodigoProduto + ", "
@@ -36,19 +35,13 @@ public class DAOProduto extends Conexao {
 		// eProduto.getDocumento()
 		PreparedStatement stmt = getPreparedStatement(sql);
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean alterar(EntidadeProduto eProduto) {
-		boolean retorno = false;
+	public static void alterar(EntidadeProduto eProduto) {
 
 		String sql = "UPDATE " + EntidadeProduto.NM_TABELA + " SET "
 				+ EntidadeProduto.NM_COL_Nome + " = '" + eProduto.getNome()
@@ -67,20 +60,14 @@ public class DAOProduto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean excluir(String codigoProduto) {
-		boolean retorno = false;
+	public static void excluir(String codigoProduto) {
 
 		String sql = "DELETE FROM " + EntidadeProduto.NM_TABELA + " WHERE "
 				+ EntidadeProduto.NM_COL_CodigoProduto + " = '" + codigoProduto
@@ -88,16 +75,11 @@ public class DAOProduto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
 	public static ArrayList<EntidadeProduto> consultarTodos() {

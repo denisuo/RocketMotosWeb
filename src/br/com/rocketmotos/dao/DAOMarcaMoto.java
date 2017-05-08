@@ -15,8 +15,7 @@ public class DAOMarcaMoto extends Conexao {
 
 	}
 
-	public static boolean incluir(EntidadeMarcaMoto eMarcaMoto) {
-		boolean retorno = false;
+	public static void incluir(EntidadeMarcaMoto eMarcaMoto) {
 
 		String sql = "INSERT INTO " + EntidadeMarcaMoto.NM_TABELA + " ("
 				+ EntidadeMarcaMoto.NM_COL_Nome + ") values ('"
@@ -27,20 +26,13 @@ public class DAOMarcaMoto extends Conexao {
 		// + EntidadeMarcaMoto.NM_COL_Nome + ") values (?)";
 		try {
 			// stmt.setString(1, marcaMoto.getNome());
-
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean alterar(EntidadeMarcaMoto eMarcaMoto) {
-		boolean retorno = false;
+	public static void alterar(EntidadeMarcaMoto eMarcaMoto) {
 
 		String sql = "UPDATE " + EntidadeMarcaMoto.NM_TABELA + " SET "
 				+ EntidadeMarcaMoto.NM_COL_Nome + " = '" + eMarcaMoto.getNome()
@@ -49,42 +41,28 @@ public class DAOMarcaMoto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			// stmt.setString(s);
-
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean excluir(Integer codigoMarcaMoto) {
-		boolean retorno = false;
-
+	public static void excluir(Integer codigoMarcaMoto) {
 		String sql = "DELETE FROM " + EntidadeMarcaMoto.NM_TABELA + " WHERE "
 				+ EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto + " = "
 				+ codigoMarcaMoto;
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static ArrayList<EntidadeMarcaMoto> consultarTodos() {
+	public ArrayList<EntidadeMarcaMoto> consultarTodos() {
 
 		String sql = "SELECT * FROM " + EntidadeMarcaMoto.NM_TABELA;
 		ArrayList<EntidadeMarcaMoto> listaRetorno = new ArrayList<EntidadeMarcaMoto>();

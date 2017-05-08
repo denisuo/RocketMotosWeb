@@ -16,8 +16,7 @@ public class DAOCategoriaProduto extends Conexao {
 
 	}
 
-	public static boolean incluir(EntidadeCategoriaProduto eCategoriaProduto) {
-		boolean retorno = false;
+	public static void incluir(EntidadeCategoriaProduto eCategoriaProduto) {
 
 		String sql = "INSERT INTO " + EntidadeCategoriaProduto.NM_TABELA + " ("
 				+ EntidadeCategoriaProduto.NM_COL_Nome + ", "
@@ -27,19 +26,13 @@ public class DAOCategoriaProduto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean alterar(EntidadeCategoriaProduto eCategoriaProduto) {
-		boolean retorno = false;
+	public static void alterar(EntidadeCategoriaProduto eCategoriaProduto) {
 
 		String sql = "UPDATE " + EntidadeCategoriaProduto.NM_TABELA + " SET "
 				+ EntidadeCategoriaProduto.NM_COL_Nome + " = '"
@@ -51,20 +44,14 @@ public class DAOCategoriaProduto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean excluir(Integer codigoCategoriaProduto) {
-		boolean retorno = false;
+	public static void excluir(Integer codigoCategoriaProduto) {
 
 		String sql = "DELETE FROM " + EntidadeCategoriaProduto.NM_TABELA
 				+ " WHERE "
@@ -73,16 +60,11 @@ public class DAOCategoriaProduto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
 	public static ArrayList<EntidadeCategoriaProduto> consultarTodos() {

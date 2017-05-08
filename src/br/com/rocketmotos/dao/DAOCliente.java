@@ -15,8 +15,7 @@ public class DAOCliente extends Conexao {
 
 	}
 
-	public static boolean incluir(EntidadeCliente eCliente) {
-		boolean retorno = false;
+	public static void incluir(EntidadeCliente eCliente) {
 
 		String sql = "INSERT INTO " + EntidadeCliente.NM_TABELA + " ("
 				+ EntidadeCliente.NM_COL_NumeroDocumento + ", "
@@ -31,19 +30,13 @@ public class DAOCliente extends Conexao {
 		// eCliente.getDocumento()
 		PreparedStatement stmt = getPreparedStatement(sql);
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean alterar(EntidadeCliente eCliente) {
-		boolean retorno = false;
+	public static void alterar(EntidadeCliente eCliente) {
 
 		String sql = "UPDATE " + EntidadeCliente.NM_TABELA + " SET "
 				+ EntidadeCliente.NM_COL_Nome + " = '" + eCliente.getNome()
@@ -57,20 +50,14 @@ public class DAOCliente extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public boolean excluir(String numeroDocumentoCliente) {
-		boolean retorno = false;
+	public static void excluir(String numeroDocumentoCliente) {
 
 		String sql = "DELETE FROM " + EntidadeCliente.NM_TABELA + " WHERE "
 				+ EntidadeCliente.NM_COL_NumeroDocumento + " = "
@@ -78,16 +65,11 @@ public class DAOCliente extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao excluir em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
 	public static ArrayList<EntidadeCliente> consultarTodos() {

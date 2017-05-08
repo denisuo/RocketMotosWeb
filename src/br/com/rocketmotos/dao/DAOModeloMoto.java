@@ -15,8 +15,7 @@ public class DAOModeloMoto extends Conexao {
 
 	}
 
-	public static boolean incluir(EntidadeModeloMoto eModeloMoto) {
-		boolean retorno = false;
+	public static void incluir(EntidadeModeloMoto eModeloMoto) {
 
 		String sql = "INSERT INTO " + EntidadeModeloMoto.NM_TABELA + " ("
 				+ EntidadeModeloMoto.NM_COL_Nome + ", "
@@ -28,21 +27,15 @@ public class DAOModeloMoto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
 			System.out.println(e.getMessage());
 			System.out.println(e.getCause());
 		}
-
-		return retorno;
 	}
 
-	public static boolean alterar(EntidadeModeloMoto eModeloMoto) {
+	public static void alterar(EntidadeModeloMoto eModeloMoto) {
 		boolean retorno = false;
 
 		String sql = "UPDATE " + EntidadeModeloMoto.NM_TABELA + " SET "
@@ -57,22 +50,14 @@ public class DAOModeloMoto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			// stmt.setString(s);
-
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
-	public static boolean excluir(Integer codigoModeloMoto) {
-		boolean retorno = false;
+	public static void excluir(Integer codigoModeloMoto) {
 
 		String sql = "DELETE FROM " + EntidadeModeloMoto.NM_TABELA + " WHERE "
 				+ EntidadeModeloMoto.NM_COL_CodigoModeloMoto + " = "
@@ -82,16 +67,11 @@ public class DAOModeloMoto extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
-			if (stmt.executeUpdate() == 0) {
-				retorno = true;
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Erro ao alterar em " + NM_ENTIDADE);
 		}
-
-		return retorno;
 	}
 
 	public static ArrayList<EntidadeModeloMoto> consultarTodos() {

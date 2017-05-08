@@ -1,6 +1,15 @@
 package br.com.rocketmotos.entidade;
 
 public class EntidadeItemOrdemServico {
+	
+	public static final String NM_ENTIDADE = EntidadeItemOrdemServico.class
+			.getSimpleName();
+	public static final String NM_TABELA = "ITEM_ORDEM_SERVICO";
+
+	public static final String NM_COL_CodigoOrdemServico = EntidadeOrdemServico.NM_COL_CodigoOrdemServico;
+	public static final String NM_COL_CodigoProduto = EntidadeProduto.NM_COL_CodigoProduto;
+	public static final String NM_COL_CodigoServico = EntidadeServico.NM_COL_CodigoServico;
+	public static final String NM_COL_QtdProdutoUtilizado = "QTD_PROD_UTILIZADO";
 
 	private int codigoOrdemServico;
 	private String codigoProduto;
