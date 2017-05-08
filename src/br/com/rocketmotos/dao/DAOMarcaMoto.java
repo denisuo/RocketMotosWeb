@@ -62,7 +62,7 @@ public class DAOMarcaMoto extends Conexao {
 		}
 	}
 
-	public ArrayList<EntidadeMarcaMoto> consultarTodos() {
+	public static ArrayList<EntidadeMarcaMoto> consultarTodos() {
 
 		String sql = "SELECT * FROM " + EntidadeMarcaMoto.NM_TABELA;
 		ArrayList<EntidadeMarcaMoto> listaRetorno = new ArrayList<EntidadeMarcaMoto>();
@@ -86,7 +86,7 @@ public class DAOMarcaMoto extends Conexao {
 		return listaRetorno;
 	}
 
-	public static ArrayList<EntidadeMarcaMoto> consultarPorCodigo(
+	public static EntidadeMarcaMoto consultarPorCodigo(
 			Integer codigoMarcaMoto) {
 
 		String sql = "SELECT * FROM " + EntidadeMarcaMoto.NM_TABELA + " WHERE "
@@ -95,22 +95,20 @@ public class DAOMarcaMoto extends Conexao {
 		ArrayList<EntidadeMarcaMoto> listaRetorno = new ArrayList<EntidadeMarcaMoto>();
 		PreparedStatement stmt = getPreparedStatement(sql);
 
+		EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
 		try {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
 				eMarcaMoto.setCodigo(Integer.valueOf(rs
 						.getString(EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto)));
 				eMarcaMoto.setNome(rs.getString(EntidadeMarcaMoto.NM_COL_Nome));
-
-				listaRetorno.add(eMarcaMoto);
 			}
 
 		} catch (SQLException e) {
 			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
-
-		return listaRetorno;
+		
+		return eMarcaMoto;
 	}
 
 	public static ArrayList<EntidadeMarcaMoto> consultarPorNome(String nome) {
