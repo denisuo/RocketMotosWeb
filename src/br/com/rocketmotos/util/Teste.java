@@ -1,15 +1,26 @@
 package br.com.rocketmotos.util;
 
 import java.sql.Date;
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 
 import br.com.rocketmotos.dao.DAOCategoriaProduto;
+import br.com.rocketmotos.dao.DAOItemOrdemServico;
+import br.com.rocketmotos.dao.DAOItemVenda;
+import br.com.rocketmotos.dao.DAOOrdemServico;
+import br.com.rocketmotos.dao.DAOServico;
 import br.com.rocketmotos.dao.DAOMoto;
 import br.com.rocketmotos.dao.DAOProduto;
+import br.com.rocketmotos.dao.DAOVenda;
 import br.com.rocketmotos.entidade.EntidadeCategoriaProduto;
 import br.com.rocketmotos.entidade.EntidadeCliente;
+import br.com.rocketmotos.entidade.EntidadeItemOrdemServico;
+import br.com.rocketmotos.entidade.EntidadeItemVenda;
+import br.com.rocketmotos.entidade.EntidadeOrdemServico;
+import br.com.rocketmotos.entidade.EntidadeServico;
 import br.com.rocketmotos.entidade.EntidadeMoto;
 import br.com.rocketmotos.entidade.EntidadeProduto;
+import br.com.rocketmotos.entidade.EntidadeVenda;
 
 
 
@@ -24,25 +35,26 @@ public class Teste {
 //		EntidadeClientePJ clientePJ = new EntidadeClientePJ();
 //		Double valorDesconto = clientePJ.getDesconto();
 //		valor = valor + (valor * valorDesconto);
+		
+//		DAOVenda.excluir(1);
 
-		EntidadeProduto eProduto = new EntidadeProduto();
-		eProduto.setCodigoProduto("123456789");
-		eProduto.setNome("OLEO LUBRAX 20W50");
-		eProduto.setDescricao("OLEO LUBRAX LUBRAX 20W50");
-		eProduto.setValidade(Date.valueOf("2030-12-15"));
-		eProduto.setCodigoCategoria(2);
-		eProduto.setValor(20.00);
-		eProduto.setQuantidade(100);
+		EntidadeItemVenda eIV = new EntidadeItemVenda();
+		eIV.setCodigoVenda(1);
+		eIV.setCodigoProduto("123456790");
+		eIV.setQtd(4);
 		
-		//DAOProduto.incluir(eProduto);
+//		DAOItemVenda.excluirUnicoItem(1, "123456789");
+		DAOItemVenda.incluir(eIV);
 		
-		ArrayList<EntidadeProduto> alProduto = new ArrayList<EntidadeProduto>();
-		alProduto = DAOProduto.consultarTodos();
+		ArrayList<EntidadeItemVenda> al = new ArrayList<EntidadeItemVenda>();
+		al = DAOItemVenda.consultarTodosItensPorVenda(1);
 		
-		for (EntidadeProduto ep : alProduto) {
-			
-			System.out.println(ep);
-			
+		for (EntidadeItemVenda entidadeItemVenda : al) {
+			System.out.println(entidadeItemVenda.toString());
 		}
+		
+		
+		
+		
 	}
 }

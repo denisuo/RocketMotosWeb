@@ -4,6 +4,17 @@ import java.sql.Date;
 
 public class EntidadeVenda {
 
+	public static final String NM_ENTIDADE = EntidadeVenda.class
+			.getSimpleName();
+	public static final String NM_TABELA = "VENDA";
+
+	public static final String NM_COL_CodigoVenda = "VENDA_CD";
+	public static final String NM_COL_NumeroDocumentoCliente = EntidadeCliente.NM_COL_NumeroDocumento;
+	public static final String NM_COL_Data = "DATA";
+	public static final String NM_COL_Valor = "VALOR";
+	public static final String NM_COL_TipoPagamento = "TIPO";
+	public static final String NM_COL_Desconto = "DESCONTO";
+
 	private int codigo;
 	private String documentoCliente;
 	private Date data;
@@ -63,7 +74,9 @@ public class EntidadeVenda {
 	public String toString() {
 		return "EntidadeVenda [codigo=" + codigo + ", documentoCliente="
 				+ documentoCliente + ", data=" + data + ", valor=" + valor
-				+ ", tipoPagamento=" + tipoPagamento + "]";
+				+ ", tipoPagamento=" + tipoPagamento + ", desconto=" + desconto
+				+ "]";
 	}
+
 
 }
