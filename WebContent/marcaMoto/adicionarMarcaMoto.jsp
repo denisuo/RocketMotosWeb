@@ -7,7 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inclusão de Marca de Moto</title>
 
-<link rel="stylesheet" type="text/css" href="WebContent/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
+
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
 
 </head>
 

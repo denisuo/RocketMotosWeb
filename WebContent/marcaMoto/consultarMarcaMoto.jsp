@@ -9,10 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inclusão de Marca de Moto</title>
 
-<link href="..\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
 
-<script src="..\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
-<script src="..\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
+
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
 
 </head>
 <script type="text/javascript">
@@ -29,6 +30,10 @@ function excluir(){
 function exibirAlteracao(){
 	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_EXIBIR_ALTERACAO%>";
 }
+function incluir(){
+	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_INCLUIR%>";
+}
+
 </script>
 <%
 	ArrayList<EntidadeMarcaMoto> alMarcaMoto;
@@ -39,24 +44,72 @@ function exibirAlteracao(){
 	}
 %>
 <body>
+<jsp:include page="../template.jsp"/>
 <h1>TESTE MARCA MOTO</h1>
 
-<form action="ServletMarcaMoto" method="post">
+<div id="main" class="container-fluid">
+<h3 class="page-header">Consultar Marca Moto</h3>
+<form class="form-horizontal" action="ServletMarcaMoto" method="post">
 
-<input type="hidden" id="evento" name="evento" value="">
-<input type="text" id="nmMarcaMoto" name="nmMarcaMoto" maxlength="50">
-<input type="submit" value="CONSULTAR" onclick="consultar();">
-<input type="submit" value="INCLUIR" onclick="incluir();">
 <input type="submit" value="EXCLUIR" onclick="excluir();">
-<input type="submit" value="ALTERAR" onclick="exibirAlteracao();">
-<br>
-<%
-	for(EntidadeMarcaMoto eMarcaMoto : alMarcaMoto){
-%>
-	<input type="radio" id="cdMarcaMoto" name="cdMarcaMoto" value="<%=eMarcaMoto.getCodigo()%>"> <%=eMarcaMoto.getNome()%> <BR>
-<%} %>
 
+<div class="container" align="left">
+	<div class="row">
+        <div class="col-md-6">
+            <div id="custom-search-input">
+                <div class="input-group col-md-8">
+                    <input type="text" id="nmMarcaMoto" name="nmMarcaMoto" class="form-control input-sm" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-sm" type="submit" onclick="consultar();"> 
+                        <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                        <button class="btn btn-success btn-sm" type="submit" onclick="incluir();">Incluir</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+<input type="hidden" id="<%=ServletMarcaMoto.NM_EVENTO%>" name="<%=ServletMarcaMoto.NM_EVENTO%>" value="">
+	<div class="container">
+	  
+	  <%if(!alMarcaMoto.isEmpty()){ %>
+	  <table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Marca</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+	    <%
+			for(EntidadeMarcaMoto eMarcaMoto : alMarcaMoto){
+		%>
+			<tr>
+				<td><input type="radio" id="cdMarcaMoto" name="cdMarcaMoto" value="<%=eMarcaMoto.getCodigo()%>"><%=eMarcaMoto.getCodigo()%></td>
+				<td><%=eMarcaMoto.getNome()%></td>
+			</tr>
+	        
+		<%} %>
+	    </tbody>
+	  </table>
+	  <%} %>
+	 
+	   <%if(!alMarcaMoto.isEmpty()){ %>
+	  <div class="container" align="center">
+	  	<td>
+			<button id="btnAlterar" name="btnAlterar" class="btn btn-success btn-xs" onclick="exibirAlteracao();">Alterar</button>
+			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>
+		</td>
+	  </div>
+	  <%} %>
+	  
+	</div>
 </form>
+</div>
+
 
 </body>
 </html>

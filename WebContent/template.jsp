@@ -7,10 +7,6 @@
 <title>Cadastro de Cliente</title>
 
 <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-=======
-<link href="bootstrap-3.3.7-dist/css/style.css" rel="stylesheet">
->>>>>>> origin/master
 
 <script src="bootstrap-3.3.7-dist/js/jquery.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -31,7 +27,7 @@
 				<a class="navbar-brand">Rocket Motos Web</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-left">
 					<li><a href="#">Início</a></li>
 					<li><a href="#">Opções</a></li>
 					<li><a href="#">Perfil</a></li>
@@ -41,8 +37,6 @@
 		</div>
 	</nav>
 	<br><br><br>
-	<div id="main" class="container-fluid">
-		<h3 class="page-header">Template Inicial</h3>
-	</div>
+
 </body>
 </html>

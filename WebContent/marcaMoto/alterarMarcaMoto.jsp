@@ -7,6 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alteração de Marca de Moto</title>
 
+<link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
+
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
@@ -23,7 +27,7 @@ function processarAlteracao(){
 
 <body>
 	<div id="main" class="container-fluid">
-		<h3 class="page-header">Adicionar Marca Moto</h3>
+		<h3 class="page-header">Alterar Marca Moto</h3>
 		<form class="form-horizontal" action="ServletMarcaMoto" method="post">
 		<input type="hidden" id="<%=ServletMarcaMoto.NM_EVENTO%>" name="<%=ServletMarcaMoto.NM_EVENTO%>" value="">
 		
