@@ -7,10 +7,6 @@
 <title>Cadastro de Cliente</title>
 
 <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-=======
-<link href="bootstrap-3.3.7-dist/css/style.css" rel="stylesheet">
->>>>>>> origin/master
 
 <script src="bootstrap-3.3.7-dist/js/jquery.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>

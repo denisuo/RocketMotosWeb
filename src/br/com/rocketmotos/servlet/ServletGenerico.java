@@ -20,11 +20,7 @@ public abstract class ServletGenerico extends HttpServlet {
 	public static final String NM_EVENTO_INCLUIR = "incluir";
 	public static final String NM_EVENTO_EXIBIR_ALTERACAO = "exibirAlteracao";
 	public static final String NM_EVENTO_PROCESSAR_ALTERACAO = "processarAlteracao";
-<<<<<<< HEAD
 	public static final String NM_EVENTO_EXCLUIR = "excluir";
-=======
-	public static final String NM_EVENTO_EXCLUIR = "exlcuir";
->>>>>>> origin/master
 	public static final String NM_EVENTO_CONSULTAR_TODOS = "consultarTodos";
 
 	protected abstract void incluir(HttpServletRequest request,

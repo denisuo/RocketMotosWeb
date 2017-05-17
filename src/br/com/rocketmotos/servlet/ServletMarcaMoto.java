@@ -18,7 +18,6 @@ import br.com.rocketmotos.entidade.EntidadeMarcaMoto;
 @WebServlet("/ServletMarcaMoto")
 public class ServletMarcaMoto extends ServletGenerico {
 
-<<<<<<< HEAD
 	private static final String NM_JSP_CONSULTAR = "/marcaMoto/consultarMarcaMoto.jsp";
 	// private static final String NM_JSP_ALTERAR_MARCA_MOTO =
 	// "/marcaMoto/alterarMarcaMoto.jsp";
@@ -27,13 +26,6 @@ public class ServletMarcaMoto extends ServletGenerico {
 	private static final String NM_SERVLET = ServletMarcaMoto.class
 			.getSimpleName();
 
-=======
-	private static final String NM_JSP = "Teste.jsp";
-	private static final String NM_JSP_ALTERAR_MARCA_MOTO = "alterarMarcaMoto.jsp";
-	private static final String NM_SERVLET = ServletMarcaMoto.class
-			.getSimpleName();
-	
->>>>>>> origin/master
 	public static final String NM_PARAMETRO_CodigoMarcaMoto = "cdMarcaMoto";
 	public static final String NM_PARAMETRO_NomeMarcaMoto = "nmMarcaMoto";
 
@@ -50,17 +42,10 @@ public class ServletMarcaMoto extends ServletGenerico {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-<<<<<<< HEAD
 		// declara as variaveis
 		String acao = "";
 
 		// recupera o evento desejado
-=======
-		//declara as variaveis
-		String acao = "";
-
-		//recupera os parametros do request
->>>>>>> origin/master
 		acao = request.getParameter("evento");
 
 		if (acao != null && acao.equalsIgnoreCase(this.NM_EVENTO_INCLUIR)) {
@@ -78,12 +63,8 @@ public class ServletMarcaMoto extends ServletGenerico {
 				&& acao.equalsIgnoreCase(this.NM_EVENTO_PROCESSAR_ALTERACAO)) {
 			this.processarAlteracao(request, response);
 		} else {
-<<<<<<< HEAD
 			//caso nao tenha nenhum evento, redireciona para a pagina de consulta
 			this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
-=======
-			this.redirecionarPagina(request, response, this.NM_JSP);
->>>>>>> origin/master
 		}
 
 	}
@@ -92,17 +73,10 @@ public class ServletMarcaMoto extends ServletGenerico {
 	protected void incluir(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 
-<<<<<<< HEAD
 		// declara as variaveis
 		String nomeMarca = "";
 
 		// recupera os parametros do request
-=======
-		//declara as variaveis
-		String nomeMarca = "";
-
-		//recupera os parametros do request
->>>>>>> origin/master
 		nomeMarca = request.getParameter("nomeMarca");
 
 		EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
@@ -129,31 +103,19 @@ public class ServletMarcaMoto extends ServletGenerico {
 
 		request.setAttribute("arrayMarcaMoto", alMarcaMoto);
 
-<<<<<<< HEAD
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
-=======
-		this.redirecionarPagina(request, response, this.NM_JSP);
->>>>>>> origin/master
 	}
 
 	@Override
 	public void excluir(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-<<<<<<< HEAD
 		// declara as variaveis
 		String codigoMarcaMoto = "";
 
 		// recupera os parametros do request
 		codigoMarcaMoto = request
 				.getParameter(this.NM_PARAMETRO_CodigoMarcaMoto);
-=======
-		//declara as variaveis
-		String codigoMarcaMoto = "";
-
-		//recupera os parametros do request
-		codigoMarcaMoto = request.getParameter("rdCodigoMarca");
->>>>>>> origin/master
 
 		if (codigoMarcaMoto != null && !codigoMarcaMoto.equals("")) {
 			DAOMarcaMoto.excluir(Integer.valueOf(codigoMarcaMoto));
@@ -163,7 +125,6 @@ public class ServletMarcaMoto extends ServletGenerico {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void exibirAlteracao(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -206,32 +167,6 @@ public class ServletMarcaMoto extends ServletGenerico {
 		DAOMarcaMoto.alterar(eMarcaMoto);
 		
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
-=======
-	public void exibirAlteracao(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		//declara as variaveis
-		String codigoMarcaMoto = "";
-		String nomeMarcaMoto = "";
-
-		//recupera os parametros do request
-		codigoMarcaMoto = request.getParameter(this.NM_PARAMETRO_CodigoMarcaMoto);
-
-		EntidadeMarcaMoto eMarcaMoto = DAOMarcaMoto.consultarPorCodigo(Integer.valueOf(codigoMarcaMoto));
-		
-		request.setAttribute(this.NM_PARAMETRO_CodigoMarcaMoto, eMarcaMoto.getCodigo());
-		request.setAttribute(this.NM_PARAMETRO_NomeMarcaMoto, eMarcaMoto.getNome());
-		
-		this.redirecionarPagina(request, response, this.NM_JSP_ALTERAR_MARCA_MOTO);
-	}
-
-
-	@Override
-	public void processarAlteracao(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
->>>>>>> origin/master
 	}
 
 }
