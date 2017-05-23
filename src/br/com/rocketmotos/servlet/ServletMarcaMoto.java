@@ -21,6 +21,9 @@ public class ServletMarcaMoto extends ServletGenerico {
 	private static final String NM_JSP_CONSULTAR = "/marcaMoto/consultarMarcaMoto.jsp";
 	// private static final String NM_JSP_ALTERAR_MARCA_MOTO =
 	// "/marcaMoto/alterarMarcaMoto.jsp";
+
+	private static final String NM_JSP_INCLUIR_MARCA_MOTO = "/marcaMoto/adicionarMarcaMoto.jsp";
+
 	private static final String NM_JSP_ALTERAR_MARCA_MOTO = "/marcaMoto/alterarMarcaMoto.jsp";
 
 	private static final String NM_SERVLET = ServletMarcaMoto.class
@@ -51,6 +54,12 @@ public class ServletMarcaMoto extends ServletGenerico {
 		if (acao != null && acao.equalsIgnoreCase(this.NM_EVENTO_INCLUIR)) {
 			this.incluir(request, response);
 		} else if (acao != null
+				&& acao.equalsIgnoreCase(this.NM_EVENTO_EXIBIR_INCLUSAO)) {
+			this.exibirInclusao(request, response);
+		} else if (acao != null
+				&& acao.equalsIgnoreCase(this.NM_EVENTO_PROCESSAR_INCLUSAO)) {
+			this.processarInclusao(request, response);
+		} else if (acao != null
 				&& acao.equalsIgnoreCase(this.NM_EVENTO_CONSULTAR_TODOS)) {
 			this.consultarTodos(request, response);
 		} else if (acao != null
@@ -63,14 +72,24 @@ public class ServletMarcaMoto extends ServletGenerico {
 				&& acao.equalsIgnoreCase(this.NM_EVENTO_PROCESSAR_ALTERACAO)) {
 			this.processarAlteracao(request, response);
 		} else {
-			//caso nao tenha nenhum evento, redireciona para a pagina de consulta
+			// caso nao tenha nenhum evento, redireciona para a pagina de
+			// consulta
 			this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 		}
 
 	}
 
 	@Override
-	protected void incluir(HttpServletRequest request,
+	public void exibirInclusao(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		//redireciona para a pagina de inclusao
+		this.redirecionarPagina(request, response,
+				this.NM_JSP_INCLUIR_MARCA_MOTO);
+	};
+
+	@Override
+	public void processarInclusao(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		// declara as variaveis
@@ -88,6 +107,12 @@ public class ServletMarcaMoto extends ServletGenerico {
 
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 
+	};
+
+	@Override
+	protected void incluir(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO: método inutilizado
 	}
 
 	@Override
@@ -95,9 +120,10 @@ public class ServletMarcaMoto extends ServletGenerico {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		ArrayList<EntidadeMarcaMoto> alMarcaMoto;
-		String nomeMarcaMoto = (String) request.getParameter(this.NM_PARAMETRO_NomeMarcaMoto);
-		
-		if(nomeMarcaMoto != null && !nomeMarcaMoto.equals("")){
+		String nomeMarcaMoto = (String) request
+				.getParameter(this.NM_PARAMETRO_NomeMarcaMoto);
+
+		if (nomeMarcaMoto != null && !nomeMarcaMoto.equals("")) {
 			alMarcaMoto = DAOMarcaMoto.consultarPorNome(nomeMarcaMoto);
 		} else {
 			alMarcaMoto = DAOMarcaMoto.consultarTodos();
@@ -159,15 +185,16 @@ public class ServletMarcaMoto extends ServletGenerico {
 		String nomeMarcaMoto = "";
 
 		// recupera os parametros do request
-		codigoMarcaMoto = request.getParameter(this.NM_PARAMETRO_CodigoMarcaMoto);
+		codigoMarcaMoto = request
+				.getParameter(this.NM_PARAMETRO_CodigoMarcaMoto);
 		nomeMarcaMoto = request.getParameter(this.NM_PARAMETRO_NomeMarcaMoto);
 
 		EntidadeMarcaMoto eMarcaMoto = new EntidadeMarcaMoto();
 		eMarcaMoto.setCodigo(Integer.valueOf(codigoMarcaMoto));
 		eMarcaMoto.setNome(nomeMarcaMoto);
-		
+
 		DAOMarcaMoto.alterar(eMarcaMoto);
-		
+
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 	}
 

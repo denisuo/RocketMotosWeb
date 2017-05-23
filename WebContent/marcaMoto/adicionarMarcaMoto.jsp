@@ -18,6 +18,10 @@
 function incluir(){
 	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_INCLUIR%>";
 }
+
+function processarInclusao(){
+	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_PROCESSAR_INCLUSAO%>";
+}
 </script>
 
 <input type="hidden" id="<%=ServletMarcaMoto.NM_EVENTO%>" name="<%=ServletMarcaMoto.NM_EVENTO%>" value="">
@@ -38,8 +42,8 @@ function incluir(){
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
-						<button id="btnIncluir" name="btnIncluir" class="btn btn-success" onclick="incluir();">Incluir</button>
-						<a id="btnCancelar" name="btnCancelar" class="btn btn-default" href="../paginaInicial.jsp">Cancelar</a>
+						<button id="btnIncluir" name="btnIncluir" class="btn btn-success" onclick="processarInclusao();">Incluir</button>
+						<button id="btnCancelar" name="btnCancelar" class="btn btn-default" onClick="history.go(-1)">Cancelar</button>
 					</div>
 				</div>
 		

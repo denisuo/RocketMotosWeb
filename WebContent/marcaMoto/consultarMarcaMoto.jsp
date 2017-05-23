@@ -30,6 +30,10 @@ function excluir(){
 function exibirAlteracao(){
 	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_EXIBIR_ALTERACAO%>";
 }
+
+function exibirInclusao(){
+	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_EXIBIR_INCLUSAO%>";
+}
 function incluir(){
 	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_INCLUIR%>";
 }
@@ -44,14 +48,11 @@ function incluir(){
 	}
 %>
 <body>
-<jsp:include page="../template.jsp"/>
-<h1>TESTE MARCA MOTO</h1>
+<jsp:include page="/template.jsp"/>
 
 <div id="main" class="container-fluid">
 <h3 class="page-header">Consultar Marca Moto</h3>
 <form class="form-horizontal" action="ServletMarcaMoto" method="post">
-
-<input type="submit" value="EXCLUIR" onclick="excluir();">
 
 <div class="container" align="left">
 	<div class="row">
@@ -63,7 +64,7 @@ function incluir(){
                         <button class="btn btn-info btn-sm" type="submit" onclick="consultar();"> 
                         <i class="glyphicon glyphicon-search"></i>
                         </button>
-                        <button class="btn btn-success btn-sm" type="submit" onclick="incluir();">Incluir</button>
+                        <button class="btn btn-success btn-sm" type="submit" onclick="exibirInclusao();">Incluir</button>
                     </span>
                 </div>
             </div>
@@ -80,7 +81,6 @@ function incluir(){
 			<tr>
 				<th>Código</th>
 				<th>Marca</th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -88,7 +88,7 @@ function incluir(){
 			for(EntidadeMarcaMoto eMarcaMoto : alMarcaMoto){
 		%>
 			<tr>
-				<td><input type="radio" id="cdMarcaMoto" name="cdMarcaMoto" value="<%=eMarcaMoto.getCodigo()%>"><%=eMarcaMoto.getCodigo()%></td>
+				<td><input type="radio" id="cdMarcaMoto" name="cdMarcaMoto" value="<%=eMarcaMoto.getCodigo()%>">&nbsp<%=eMarcaMoto.getCodigo()%></td>
 				<td><%=eMarcaMoto.getNome()%></td>
 			</tr>
 	        
@@ -100,15 +100,42 @@ function incluir(){
 	   <%if(!alMarcaMoto.isEmpty()){ %>
 	  <div class="container" align="center">
 	  	<td>
-			<button id="btnAlterar" name="btnAlterar" class="btn btn-success btn-xs" onclick="exibirAlteracao();">Alterar</button>
+	  		<button id="btnIncluir" name="btnIncluir" class="btn btn-success btn-xs" onclick="exibirInclusao();">Incluir</button>
+			<button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>
 			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>
 		</td>
-	  </div>
 	  <%} %>
+	  </div>
 	  
 	</div>
 </form>
 </div>
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalConfirmarExclusao">Open Modal</button>
+
+<!-- Modal -->
+<div id="modalConfirmarExclusao" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirmar</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-warning">Deseja confirmar a exclusão?</p>
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-primary" onclick="excluir();">Confirmar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
 
 </body>
