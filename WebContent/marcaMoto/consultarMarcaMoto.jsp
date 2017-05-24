@@ -7,13 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inclusão de Marca de Moto</title>
-
-
-<link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
-
-<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
+<title>Consulta de Marca de Moto</title>
 
 </head>
 <script type="text/javascript">
@@ -34,14 +28,11 @@ function exibirAlteracao(){
 function exibirInclusao(){
 	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_EXIBIR_INCLUSAO%>";
 }
-function incluir(){
-	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_INCLUIR%>";
-}
 
 </script>
 <%
 	ArrayList<EntidadeMarcaMoto> alMarcaMoto;
-	alMarcaMoto = (ArrayList<EntidadeMarcaMoto>) request.getAttribute("arrayMarcaMoto");
+	alMarcaMoto = (ArrayList<EntidadeMarcaMoto>) request.getAttribute(ServletMarcaMoto.NM_PARAMETRO_ArrayMarcaMoto);
 	
 	if(alMarcaMoto == null){
 		alMarcaMoto = new ArrayList<EntidadeMarcaMoto>();

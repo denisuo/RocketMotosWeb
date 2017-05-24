@@ -7,11 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alteração de Marca de Moto</title>
 
-<link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
-
-<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
-
 <script type="text/javascript">
 
 function processarAlteracao(){
@@ -26,6 +21,7 @@ function processarAlteracao(){
 
 
 <body>
+<jsp:include page="/template.jsp"/>
 	<div id="main" class="container-fluid">
 		<h3 class="page-header">Alterar Marca Moto</h3>
 		<form class="form-horizontal" action="ServletMarcaMoto" method="post">
