@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class ServletGenerico extends HttpServlet {
 
 	public static final String NM_EVENTO = "evento";
-	public static final String NM_EVENTO_INCLUIR = "incluir";
 	public static final String NM_EVENTO_EXIBIR_INCLUSAO = "exibirInclusao";
 	public static final String NM_EVENTO_PROCESSAR_INCLUSAO = "processarInclusao";
 	public static final String NM_EVENTO_EXIBIR_ALTERACAO = "exibirAlteracao";
@@ -25,9 +24,6 @@ public abstract class ServletGenerico extends HttpServlet {
 	public static final String NM_EVENTO_EXCLUIR = "excluir";
 	public static final String NM_EVENTO_CONSULTAR_TODOS = "consultarTodos";
 
-	protected abstract void incluir(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException;
-	
 	public abstract void exibirInclusao(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException;
 	

@@ -31,6 +31,7 @@ public class ServletMarcaMoto extends ServletGenerico {
 
 	public static final String NM_PARAMETRO_CodigoMarcaMoto = "cdMarcaMoto";
 	public static final String NM_PARAMETRO_NomeMarcaMoto = "nmMarcaMoto";
+	public static final String NM_PARAMETRO_ArrayMarcaMoto = "arrayMarcaMoto";
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -49,11 +50,10 @@ public class ServletMarcaMoto extends ServletGenerico {
 		String acao = "";
 
 		// recupera o evento desejado
-		acao = request.getParameter("evento");
+		acao = request.getParameter(this.NM_EVENTO);
+		// acao = (String) request.getAttribute(this.NM_EVENTO);
 
-		if (acao != null && acao.equalsIgnoreCase(this.NM_EVENTO_INCLUIR)) {
-			this.incluir(request, response);
-		} else if (acao != null
+		if (acao != null
 				&& acao.equalsIgnoreCase(this.NM_EVENTO_EXIBIR_INCLUSAO)) {
 			this.exibirInclusao(request, response);
 		} else if (acao != null
@@ -82,8 +82,8 @@ public class ServletMarcaMoto extends ServletGenerico {
 	@Override
 	public void exibirInclusao(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		//redireciona para a pagina de inclusao
+
+		// redireciona para a pagina de inclusao
 		this.redirecionarPagina(request, response,
 				this.NM_JSP_INCLUIR_MARCA_MOTO);
 	};
@@ -110,12 +110,6 @@ public class ServletMarcaMoto extends ServletGenerico {
 	};
 
 	@Override
-	protected void incluir(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO: método inutilizado
-	}
-
-	@Override
 	public void consultarTodos(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -129,7 +123,7 @@ public class ServletMarcaMoto extends ServletGenerico {
 			alMarcaMoto = DAOMarcaMoto.consultarTodos();
 		}
 
-		request.setAttribute("arrayMarcaMoto", alMarcaMoto);
+		request.setAttribute(this.NM_PARAMETRO_ArrayMarcaMoto, alMarcaMoto);
 
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 	}
