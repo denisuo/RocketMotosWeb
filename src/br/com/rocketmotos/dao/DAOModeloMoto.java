@@ -104,19 +104,18 @@ public class DAOModeloMoto extends Conexao {
 		return listaRetorno;
 	}
 
-	public static ArrayList<EntidadeModeloMoto> consultarPorCodigoMarca(
-			Integer codigoMarcaMoto) {
+	public static EntidadeModeloMoto consultarPorCodigoModelo(
+			Integer codigoModeloMoto) {
 
 		String sql = "SELECT * FROM " + EntidadeModeloMoto.NM_TABELA
-				+ " WHERE " + EntidadeModeloMoto.NM_COL_CodigoMarcaMoto + " = "
-				+ codigoMarcaMoto;
-		ArrayList<EntidadeModeloMoto> listaRetorno = new ArrayList<EntidadeModeloMoto>();
+				+ " WHERE " + EntidadeModeloMoto.NM_COL_CodigoModeloMoto + " = "
+				+ codigoModeloMoto;
 		PreparedStatement stmt = getPreparedStatement(sql);
 
+		EntidadeModeloMoto eModeloMoto = new EntidadeModeloMoto();
 		try {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				EntidadeModeloMoto eModeloMoto = new EntidadeModeloMoto();
 				eModeloMoto
 						.setCodigoModeloMoto(Integer.valueOf(rs
 								.getString(EntidadeModeloMoto.NM_COL_CodigoModeloMoto)));
@@ -126,15 +125,13 @@ public class DAOModeloMoto extends Conexao {
 						.getString(EntidadeModeloMoto.NM_COL_CodigoMarcaMoto)));
 				eModeloMoto.setCilindrada(rs
 						.getString(EntidadeModeloMoto.NM_COL_Cilindrada));
-
-				listaRetorno.add(eModeloMoto);
 			}
 
 		} catch (SQLException e) {
 			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
-		return listaRetorno;
+		return eModeloMoto;
 	}
 
 	public static ArrayList<EntidadeModeloMoto> consultarPorCilindrada(
