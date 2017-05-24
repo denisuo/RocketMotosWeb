@@ -32,6 +32,7 @@
 					<li><a href="#">Opções</a></li>
 					<li><a href="#">Perfil</a></li>
 					<li><a href="#">Ajuda</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletCliente?evento=">Cliente</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletMarcaMoto?evento=">Marca Moto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletModeloMoto?evento=">Modelo Moto</a></li>
 				</ul>

@@ -13,4 +13,12 @@
     <servlet-name>ServletMarcaMoto</servlet-name>
     <servlet-class>br.com.rocketmotos.servlet.ServletMarcaMoto</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ServletModeloMoto</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletModeloMoto</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletCliente</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletCliente</servlet-class>
+  </servlet>  
 </web-app>

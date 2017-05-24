@@ -1,49 +1,49 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.entidade.EntidadeCliente"%>
 <%@page import="br.com.rocketmotos.entidade.EntidadeModeloMoto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="br.com.rocketmotos.servlet.ServletModeloMoto"%>
+<%@page import="br.com.rocketmotos.servlet.ServletCliente"%>
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consulta de Modelo de Moto</title>
-
+<title>Consulta de Cliente</title>
 
 </head>
 <script type="text/javascript">
 
 function consultar(){
-	document.getElementById("<%=ServletModeloMoto.NM_EVENTO%>").value = "<%=ServletModeloMoto.NM_EVENTO_CONSULTAR_TODOS%>";
+	document.getElementById("<%=ServletCliente.NM_EVENTO%>").value = "<%=ServletCliente.NM_EVENTO_CONSULTAR_TODOS%>";
 }
 
 function excluir(){
-	document.getElementById("<%=ServletModeloMoto.NM_EVENTO%>").value = "<%=ServletModeloMoto.NM_EVENTO_EXCLUIR%>";
+	document.getElementById("<%=ServletCliente.NM_EVENTO%>").value = "<%=ServletCliente.NM_EVENTO_EXCLUIR%>";
 }
 
 function exibirAlteracao(){
-	document.getElementById("<%=ServletModeloMoto.NM_EVENTO%>").value = "<%=ServletModeloMoto.NM_EVENTO_EXIBIR_ALTERACAO%>";
+	document.getElementById("<%=ServletCliente.NM_EVENTO%>").value = "<%=ServletCliente.NM_EVENTO_EXIBIR_ALTERACAO%>";
 }
 
 function exibirInclusao(){
-	document.getElementById("<%=ServletModeloMoto.NM_EVENTO%>").value = "<%=ServletModeloMoto.NM_EVENTO_EXIBIR_INCLUSAO%>";
+	document.getElementById("<%=ServletCliente.NM_EVENTO%>").value = "<%=ServletCliente.NM_EVENTO_EXIBIR_INCLUSAO%>";
 }
 
 </script>
 <%
-	ArrayList<EntidadeModeloMoto> alModeloMoto;
-	alModeloMoto = (ArrayList<EntidadeModeloMoto>) request.getAttribute(ServletModeloMoto.NM_PARAMETRO_ArrayModeloMoto);
+	ArrayList<EntidadeCliente> alCliente;
+	alCliente = (ArrayList<EntidadeCliente>) request.getAttribute(ServletCliente.NM_PARAMETRO_ArrayCliente);
 	
-	if(alModeloMoto == null){
-		alModeloMoto = new ArrayList<EntidadeModeloMoto>();
+	if(alCliente == null){
+		alCliente = new ArrayList<EntidadeCliente>();
 	}
 %>
 <body>
 <jsp:include page="/template.jsp"/>
 
 <div id="main" class="container-fluid">
-<h3 class="page-header">Consultar Modelo Moto</h3>
-<form class="form-horizontal" action="ServletModeloMoto" method="post">
+<h3 class="page-header">Consultar Cliente</h3>
+<form class="form-horizontal" action="ServletCliente" method="post">
 
 <div id="barraPesquisa" class="row">
     <div class="col-md-3">
@@ -51,7 +51,7 @@ function exibirInclusao(){
  
     <div class="col-md-6">
         <div class="input-group h2">
-            <input id="nmModeloMoto" name="nmModeloMoto" class="form-control" type="text" placeholder="Pesquisar por nome do modelo">
+            <input id="nmCliente" name="nmCliente" class="form-control" type="text" placeholder="Pesquisar por nome">
             <span class="input-group-btn">
                 <button class="btn btn-primary" type="submit" onclick="consultar();">
                     <span class="glyphicon glyphicon-search"></span>
@@ -64,28 +64,30 @@ function exibirInclusao(){
     </div>
 </div>
 
-<input type="hidden" id="<%=ServletModeloMoto.NM_EVENTO%>" name="<%=ServletModeloMoto.NM_EVENTO%>" value="">
+<input type="hidden" id="<%=ServletCliente.NM_EVENTO%>" name="<%=ServletCliente.NM_EVENTO%>" value="">
 	<div class="container">
 	  
-	  <%if(!alModeloMoto.isEmpty()){ %>
+	  <%if(!alCliente.isEmpty()){ %>
 	  <table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Código</th>
+				<th>Documento</th>
 				<th>Nome</th>
-				<th>Cilindrada</th>
-				<th>Marca</th>
+				<th>Endereço</th>
+				<th>Telefone</th>
+				<th>Tipo</th>
 			</tr>
 		</thead>
 		<tbody>
 	    <%
-			for(EntidadeModeloMoto eModeloMoto : alModeloMoto){
+			for(EntidadeCliente eCliente : alCliente){
 		%>
 			<tr>
-				<td><input type="radio" id="cdModeloMoto" name="cdModeloMoto" value="<%=eModeloMoto.getCodigoModeloMoto()%>">&nbsp<%=eModeloMoto.getCodigoModeloMoto()%></td>
-				<td><%=eModeloMoto.getNome()%></td>
-				<td><%=eModeloMoto.getCilindrada()%></td>
-				<td><%=eModeloMoto.getCodigoMarcaMoto()%></td>
+				<td><input type="radio" id="nuDocumentoCliente" name="nuDocumentoCliente" value="<%=eCliente.getDocumento()%>">&nbsp<%=eCliente.getDocumento()%></td>
+				<td><%=eCliente.getNome()%></td>
+				<td><%=eCliente.getEndereco()%></td>
+				<td><%=eCliente.getTelefone()%></td>
+				<td><%=eCliente.getTipoCliente()%></td>
 			</tr>
 	        
 		<%} %>
@@ -93,7 +95,7 @@ function exibirInclusao(){
 	  </table>
 	  <%} %>
 	 
-	   <%if(!alModeloMoto.isEmpty()){ %>
+	   <%if(!alCliente.isEmpty()){ %>
 	  <div class="container" align="center">
 	  	<td>
 			<button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>

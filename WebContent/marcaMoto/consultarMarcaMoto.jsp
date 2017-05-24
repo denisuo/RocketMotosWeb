@@ -45,23 +45,25 @@ function exibirInclusao(){
 <h3 class="page-header">Consultar Marca Moto</h3>
 <form class="form-horizontal" action="ServletMarcaMoto" method="post">
 
-<div class="container" align="left">
-	<div class="row">
-        <div class="col-md-6">
-            <div id="custom-search-input">
-                <div class="input-group col-md-8">
-                    <input type="text" id="nmMarcaMoto" name="nmMarcaMoto" class="form-control input-sm" placeholder="Buscar" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-sm" type="submit" onclick="consultar();"> 
-                        <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                        <button class="btn btn-success btn-sm" type="submit" onclick="exibirInclusao();">Incluir</button>
-                    </span>
-                </div>
-            </div>
+<div id="barraPesquisa" class="row">
+    <div class="col-md-3">
+    </div>
+ 
+    <div class="col-md-6">
+        <div class="input-group h2">
+            <input id="nmMarcaMoto" name="nmMarcaMoto" class="form-control" type="text" placeholder="Pesquisar por nome da marca">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" onclick="consultar();">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
         </div>
-	</div>
+    </div>
+    <div class="col-md-3">
+		<button class="btn btn-primary pull-center h1" type="submit" onclick="exibirInclusao();">Incluir</button>
+    </div>
 </div>
+
 
 <input type="hidden" id="<%=ServletMarcaMoto.NM_EVENTO%>" name="<%=ServletMarcaMoto.NM_EVENTO%>" value="">
 	<div class="container">
@@ -91,7 +93,6 @@ function exibirInclusao(){
 	   <%if(!alMarcaMoto.isEmpty()){ %>
 	  <div class="container" align="center">
 	  	<td>
-	  		<button id="btnIncluir" name="btnIncluir" class="btn btn-success btn-xs" onclick="exibirInclusao();">Incluir</button>
 			<button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>
 			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>
 		</td>
