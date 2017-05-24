@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cadastro de Cliente</title>
 
-<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
 
-<script src="bootstrap-3.3.7-dist/js/jquery.min.js"></script>
-<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -32,11 +32,12 @@
 					<li><a href="#">Opções</a></li>
 					<li><a href="#">Perfil</a></li>
 					<li><a href="#">Ajuda</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletMarcaMoto?evento=">Marca Moto</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletModeloMoto?evento=">Modelo Moto</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<br><br><br>
-
 </body>
 </html>

@@ -11,14 +11,6 @@
 </head>
 <script type="text/javascript">
 
-function incluir(){
-	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_INCLUIR%>";
-	//if(document.getElementById("nomeMarca").value == ""){
-	//	alert('ABCD');
-	//	return false;
-	//}
-}
-
 function consultar(){
 	document.getElementById("<%=ServletMarcaMoto.NM_EVENTO%>").value = "<%=ServletMarcaMoto.NM_EVENTO_CONSULTAR_TODOS%>";
 }
