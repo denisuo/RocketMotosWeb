@@ -10,14 +10,13 @@ public class EntidadeMoto {
 	public static final String NM_COL_Cor = "COR";
 	public static final String NM_COL_NumeroDocumentoCliente = EntidadeCliente.NM_COL_NumeroDocumento;
 	public static final String NM_COL_CodigoModeloMoto = EntidadeModeloMoto.NM_COL_CodigoModeloMoto;
-	public static final String NM_COL_CodigoMarcaMoto = EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto;
 
 	private String placa;
 	private String ano;
 	private String cor;
 	private String numeroDocumentoCliente;
 	private int codigoModeloMoto;
-	private int codigoMarcaMoto;
+	private String nomeModeloMoto;
 
 	public String getPlaca() {
 		return placa;
@@ -59,20 +58,20 @@ public class EntidadeMoto {
 		this.codigoModeloMoto = codigoModeloMoto;
 	}
 
-	public int getCodigoMarcaMoto() {
-		return codigoMarcaMoto;
+	public String getNomeModeloMoto() {
+		return nomeModeloMoto;
 	}
 
-	public void setCodigoMarcaMoto(int codigoMarcaMoto) {
-		this.codigoMarcaMoto = codigoMarcaMoto;
+	public void setNomeModeloMoto(String nomeModeloMoto) {
+		this.nomeModeloMoto = nomeModeloMoto;
 	}
 
 	@Override
 	public String toString() {
 		return "EntidadeMoto [placa=" + placa + ", ano=" + ano + ", cor=" + cor
-				+ ", documentoCliente=" + numeroDocumentoCliente
+				+ ", numeroDocumentoCliente=" + numeroDocumentoCliente
 				+ ", codigoModeloMoto=" + codigoModeloMoto
-				+ ", codigoMarcaMoto=" + codigoMarcaMoto + "]";
+				+ ", nomeModeloMoto=" + nomeModeloMoto + "]";
 	}
 
 }

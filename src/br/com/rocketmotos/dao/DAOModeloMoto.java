@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.rocketmotos.entidade.EntidadeMarcaMoto;
 import br.com.rocketmotos.entidade.EntidadeModeloMoto;
 
 public class DAOModeloMoto extends Conexao {
@@ -76,7 +77,18 @@ public class DAOModeloMoto extends Conexao {
 
 	public static ArrayList<EntidadeModeloMoto> consultarTodos() {
 
-		String sql = "SELECT * FROM " + EntidadeModeloMoto.NM_TABELA;
+		// monta select com inner join em marca moto para recuperar o nome da
+		// marca
+		String sql = "SELECT " + EntidadeModeloMoto.NM_TABELA + ".*, "
+				+ EntidadeMarcaMoto.NM_TABELA + "."
+				+ EntidadeMarcaMoto.NM_COL_Nome + " AS NOME_MARCA " + " FROM "
+				+ EntidadeModeloMoto.NM_TABELA + " INNER JOIN "
+				+ EntidadeMarcaMoto.NM_TABELA + " ON ("
+				+ EntidadeMarcaMoto.NM_TABELA + "."
+				+ EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto + " = "
+				+ EntidadeModeloMoto.NM_TABELA + "."
+				+ EntidadeModeloMoto.NM_COL_CodigoMarcaMoto + ")";
+
 		ArrayList<EntidadeModeloMoto> listaRetorno = new ArrayList<EntidadeModeloMoto>();
 		PreparedStatement stmt = getPreparedStatement(sql);
 
@@ -93,6 +105,9 @@ public class DAOModeloMoto extends Conexao {
 						.getString(EntidadeModeloMoto.NM_COL_CodigoMarcaMoto)));
 				eModeloMoto.setCilindrada(rs
 						.getString(EntidadeModeloMoto.NM_COL_Cilindrada));
+				eModeloMoto.setNomeMarcaMoto(rs
+						.getString(EntidadeMarcaMoto.NM_COL_CodigoMarcaMoto)
+						+ "-" + rs.getString("NOME_MARCA"));
 
 				listaRetorno.add(eModeloMoto);
 			}
@@ -108,8 +123,8 @@ public class DAOModeloMoto extends Conexao {
 			Integer codigoModeloMoto) {
 
 		String sql = "SELECT * FROM " + EntidadeModeloMoto.NM_TABELA
-				+ " WHERE " + EntidadeModeloMoto.NM_COL_CodigoModeloMoto + " = "
-				+ codigoModeloMoto;
+				+ " WHERE " + EntidadeModeloMoto.NM_COL_CodigoModeloMoto
+				+ " = " + codigoModeloMoto;
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		EntidadeModeloMoto eModeloMoto = new EntidadeModeloMoto();
