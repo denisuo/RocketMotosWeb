@@ -20,5 +20,9 @@
   <servlet>
     <servlet-name>ServletCliente</servlet-name>
     <servlet-class>br.com.rocketmotos.servlet.ServletCliente</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletMoto</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletMoto</servlet-class>
   </servlet>  
 </web-app>

@@ -85,7 +85,7 @@ function exibirInclusao(){
 				<td><input type="radio" id="cdModeloMoto" name="cdModeloMoto" value="<%=eModeloMoto.getCodigoModeloMoto()%>">&nbsp<%=eModeloMoto.getCodigoModeloMoto()%></td>
 				<td><%=eModeloMoto.getNome()%></td>
 				<td><%=eModeloMoto.getCilindrada()%></td>
-				<td><%=eModeloMoto.getCodigoMarcaMoto()%></td>
+				<td><%=eModeloMoto.getNomeMarcaMoto()%></td>
 			</tr>
 	        
 		<%} %>
