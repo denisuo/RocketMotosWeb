@@ -24,5 +24,13 @@
   <servlet>
     <servlet-name>ServletMoto</servlet-name>
     <servlet-class>br.com.rocketmotos.servlet.ServletMoto</servlet-class>
+  </servlet> 
+  <servlet>
+    <servlet-name>ServletServico</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletServico</servlet-class>
   </servlet>  
+  <servlet>
+    <servlet-name>ServletItemOrdemServico</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletItemOrdemServico</servlet-class>
+  </servlet>   
 </web-app>
