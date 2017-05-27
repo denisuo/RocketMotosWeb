@@ -97,19 +97,18 @@ public class DAOServico extends Conexao {
 		return listaRetorno;
 	}
 
-	public static ArrayList<EntidadeServico> consultarPorCodigo(
+	public static EntidadeServico consultarPorCodigo(
 			String codigoServico) {
 
 		String sql = "SELECT * FROM " + EntidadeServico.NM_TABELA + " WHERE "
 				+ EntidadeServico.NM_COL_CodigoServico + " = " + codigoServico;
 
-		ArrayList<EntidadeServico> listaRetorno = new ArrayList<EntidadeServico>();
 		PreparedStatement stmt = getPreparedStatement(sql);
+		EntidadeServico eServico = new EntidadeServico();
 
 		try {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				EntidadeServico eServico = new EntidadeServico();
 				eServico.setCodigoServico(Integer.valueOf(rs
 						.getString(EntidadeServico.NM_COL_CodigoServico)));
 				eServico.setNome(rs.getString(EntidadeServico.NM_COL_Nome));
@@ -117,15 +116,13 @@ public class DAOServico extends Conexao {
 						.getString(EntidadeServico.NM_COL_Descricao));
 				eServico.setValor(Double.valueOf(rs
 						.getString(EntidadeServico.NM_COL_Valor)));
-
-				listaRetorno.add(eServico);
 			}
 
 		} catch (SQLException e) {
 			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
 		}
 
-		return listaRetorno;
+		return eServico;
 	}
 
 	public static ArrayList<EntidadeServico> consultarPorNomeServico(

@@ -39,6 +39,7 @@ public class DAOItemOrdemServico extends Conexao {
 
 	public static void alterar(EntidadeItemOrdemServico eItemOrdemServico) {
 
+		//monta sql para ser executado
 		String sql = "UPDATE " + EntidadeItemOrdemServico.NM_TABELA + " SET "
 				+ EntidadeItemOrdemServico.NM_COL_QtdProdutoUtilizado + " = "
 				+ eItemOrdemServico.getQtdProdutoUtilizado() + " WHERE "
@@ -62,6 +63,7 @@ public class DAOItemOrdemServico extends Conexao {
 	public static void excluirUnicoItem(Integer codigoOrdemServico,
 			String codigoProduto, Integer codigoServico) {
 
+		//monta sql para ser executado
 		String sql = "DELETE FROM " + EntidadeItemOrdemServico.NM_TABELA
 				+ " WHERE "
 				+ EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico + " = "
@@ -84,6 +86,7 @@ public class DAOItemOrdemServico extends Conexao {
 	public static void excluirTodosItensPorOrdemServico(
 			Integer codigoOrdemServico) {
 
+		//monta sql para ser executado
 		String sql = "DELETE FROM " + EntidadeItemOrdemServico.NM_TABELA
 				+ " WHERE "
 				+ EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico + " = "
@@ -102,6 +105,7 @@ public class DAOItemOrdemServico extends Conexao {
 	public static ArrayList<EntidadeItemOrdemServico> consultarTodosItensPorOrdemServico(
 			Integer codigoOrdemServico) {
 
+		//monta select
 		String sql = "SELECT * FROM " + EntidadeItemOrdemServico.NM_TABELA
 				+ " WHERE "
 				+ EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico + " = "
@@ -135,6 +139,47 @@ public class DAOItemOrdemServico extends Conexao {
 		}
 
 		return listaRetorno;
+	}
+	
+	public static EntidadeItemOrdemServico consultarUnicoItem(Integer codigoOrdemServico,
+			String codigoProduto, Integer codigoServico) {
+
+		//monta select 
+		String sql = "SELECT * FROM " + EntidadeItemOrdemServico.NM_TABELA
+				+ " WHERE "
+				+ EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico + " = "
+				+ codigoOrdemServico + " AND "
+				+ EntidadeItemOrdemServico.NM_COL_CodigoProduto + " = '"
+				+ codigoProduto + "' AND "
+				+ EntidadeItemOrdemServico.NM_COL_CodigoServico + " = "
+				+ codigoServico;
+
+		PreparedStatement stmt = getPreparedStatement(sql);
+		EntidadeItemOrdemServico eItemOrdemServico = new EntidadeItemOrdemServico();
+
+		try {
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				eItemOrdemServico
+						.setCodigoOrdemServico(Integer.valueOf(rs
+								.getString(EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico)));
+				eItemOrdemServico
+						.setCodigoProduto(rs
+								.getString(EntidadeItemOrdemServico.NM_COL_CodigoProduto));
+				eItemOrdemServico
+						.setCodigoServico(Integer.valueOf(rs
+								.getString(EntidadeItemOrdemServico.NM_COL_CodigoServico)));
+				eItemOrdemServico
+						.setQtdProdutoUtilizado(Integer.valueOf(rs
+								.getString(EntidadeItemOrdemServico.NM_COL_QtdProdutoUtilizado)));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
+		}
+		
+		return eItemOrdemServico;
+		
 	}
 
 }
