@@ -9,7 +9,9 @@
 <link href="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\css\bootstrap.min.css" rel="stylesheet">
 
 <script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.maskMoney.js"></script>
 <script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -36,6 +38,10 @@
 					<li><a href="${pageContext.request.contextPath}\ServletMoto?evento=">Moto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletMarcaMoto?evento=">Marca Moto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletModeloMoto?evento=">Modelo Moto</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletServico?evento=">Serviço</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletItemOrdemServico?evento=">Item Ordem Serviço</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletOrdemServico?evento=">Ordem Serviço</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletCategoriaProduto?evento=">Categoria Produto</a></li>
 				</ul>
 			</div>
 		</div>

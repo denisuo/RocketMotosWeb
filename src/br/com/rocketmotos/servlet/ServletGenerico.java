@@ -23,6 +23,7 @@ public abstract class ServletGenerico extends HttpServlet {
 	public static final String NM_EVENTO_PROCESSAR_ALTERACAO = "processarAlteracao";
 	public static final String NM_EVENTO_EXCLUIR = "excluir";
 	public static final String NM_EVENTO_CONSULTAR_TODOS = "consultarTodos";
+	public static final String NM_PARAMETRO_CHAVE_PRIMARIA = "chavePrimaria";
 
 	public abstract void exibirInclusao(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException;

@@ -24,5 +24,21 @@
   <servlet>
     <servlet-name>ServletMoto</servlet-name>
     <servlet-class>br.com.rocketmotos.servlet.ServletMoto</servlet-class>
+  </servlet> 
+  <servlet>
+    <servlet-name>ServletServico</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletServico</servlet-class>
   </servlet>  
+  <servlet>
+    <servlet-name>ServletItemOrdemServico</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletItemOrdemServico</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletOrdemServico</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletOrdemServico</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletCategoriaProduto</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletCategoriaProduto</servlet-class>
+  </servlet>        
 </web-app>

@@ -126,4 +126,36 @@ public class DAOCategoriaProduto extends Conexao {
 
 		return listaRetorno;
 	}
+	
+	public static ArrayList<EntidadeCategoriaProduto> consultarPorNome(
+			String nomeCategoria) {
+
+		String sql = "SELECT * FROM " + EntidadeCategoriaProduto.NM_TABELA
+				+ " WHERE "
+				+ EntidadeCategoriaProduto.NM_COL_Nome
+				+ " LIKE '%" + nomeCategoria + "%'";
+		ArrayList<EntidadeCategoriaProduto> listaRetorno = new ArrayList<EntidadeCategoriaProduto>();
+		PreparedStatement stmt = getPreparedStatement(sql);
+
+		try {
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				EntidadeCategoriaProduto eCategoriaProduto = new EntidadeCategoriaProduto();
+				eCategoriaProduto
+						.setCodigo(Integer.valueOf(rs
+								.getString(EntidadeCategoriaProduto.NM_COL_CodigoCategoriaProduto)));
+				eCategoriaProduto.setNome(rs
+						.getString(EntidadeCategoriaProduto.NM_COL_Nome));
+				eCategoriaProduto.setDescricao(rs
+						.getString(EntidadeCategoriaProduto.NM_COL_Descricao));
+
+				listaRetorno.add(eCategoriaProduto);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao consultar em " + NM_ENTIDADE);
+		}
+
+		return listaRetorno;
+	}
 }
