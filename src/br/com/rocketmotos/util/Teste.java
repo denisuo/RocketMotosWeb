@@ -31,28 +31,10 @@ public class Teste {
 	 */
 	public static void main(String[] args) {
 		
-//		Double valor = 130.00;
-//		EntidadeClientePJ clientePJ = new EntidadeClientePJ();
-//		Double valorDesconto = clientePJ.getDesconto();
-//		valor = valor + (valor * valorDesconto);
+		String dataHoje = new Date(System.currentTimeMillis()).toString();
+		dataHoje = dataHoje.replace("-", "");
 		
-//		DAOVenda.excluir(1);
-
-		EntidadeItemVenda eIV = new EntidadeItemVenda();
-		eIV.setCodigoVenda(1);
-		eIV.setCodigoProduto("123456790");
-		eIV.setQtd(4);
-		
-//		DAOItemVenda.excluirUnicoItem(1, "123456789");
-		DAOItemVenda.incluir(eIV);
-		
-		ArrayList<EntidadeItemVenda> al = new ArrayList<EntidadeItemVenda>();
-		al = DAOItemVenda.consultarTodosItensPorVenda(1);
-		
-		for (EntidadeItemVenda entidadeItemVenda : al) {
-			System.out.println(entidadeItemVenda.toString());
-		}
-		
+		System.out.println(dataHoje);
 		
 		
 		
