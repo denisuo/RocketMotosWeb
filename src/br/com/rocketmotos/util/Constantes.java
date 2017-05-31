@@ -8,4 +8,8 @@ public class Constantes {
 	
 	public static final String CAMPO_SERPARADOR_CHAVE_PRIMARIA = ";";
 	
+	public static final String Tipo_Pagamento_Dinheiro = "D";
+	
+	public static final String Tipo_Pagamento_Cartao = "C";
+	
 }

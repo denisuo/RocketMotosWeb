@@ -40,5 +40,13 @@
   <servlet>
     <servlet-name>ServletCategoriaProduto</servlet-name>
     <servlet-class>br.com.rocketmotos.servlet.ServletCategoriaProduto</servlet-class>
-  </servlet>        
+  </servlet> 
+  <servlet>
+    <servlet-name>ServletProduto</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletProduto</servlet-class>
+  </servlet>    
+  <servlet>
+    <servlet-name>ServletVenda</servlet-name>
+    <servlet-class>br.com.rocketmotos.servlet.ServletVenda</servlet-class>
+  </servlet>         
 </web-app>

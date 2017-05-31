@@ -30,10 +30,6 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#">Início</a></li>
-					<li><a href="#">Opções</a></li>
-					<li><a href="#">Perfil</a></li>
-					<li><a href="#">Ajuda</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletCliente?evento=">Cliente</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletMoto?evento=">Moto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletMarcaMoto?evento=">Marca Moto</a></li>
@@ -41,7 +37,9 @@
 					<li><a href="${pageContext.request.contextPath}\ServletServico?evento=">Serviço</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletItemOrdemServico?evento=">Item Ordem Serviço</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletOrdemServico?evento=">Ordem Serviço</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletProduto?evento=">Produto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletCategoriaProduto?evento=">Categoria Produto</a></li>
+					<li><a href="${pageContext.request.contextPath}\ServletVenda?evento=">Venda</a></li>
 				</ul>
 			</div>
 		</div>
