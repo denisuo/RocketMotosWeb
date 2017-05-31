@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.select.ComboSelect"%>
 <%@page import="br.com.rocketmotos.servlet.ServletItemOrdemServico"%>
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inclusão de Moto</title>
+<title>Inclusão de Item</title>
 
 </head>
 
@@ -16,17 +17,22 @@ function processarInclusao(){
 }
 </script>
 
+<%
+	//recupera do request para manter a barra preenchida
+	String cdOrdemServico = (String) request.getAttribute(ServletItemOrdemServico.NM_PARAMETRO_CodigoOrdemServico);
+%>
+
 <body>
 <jsp:include page="/template.jsp"/>
 	<div id="main" class="container-fluid">
-		<h3 class="page-header">Adicionar Moto</h3>
+		<h3 class="page-header">Adicionar Item</h3>
 		<form class="form-horizontal" action="ServletItemOrdemServico" method="post">
 		<input type="hidden" id="<%=ServletItemOrdemServico.NM_EVENTO%>" name="<%=ServletItemOrdemServico.NM_EVENTO%>" value="">
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-4 control-label">Código Ordem Serviço</label>
 					<div class="col-md-3">
-						<input id="cdOrdemServico" name="cdOrdemServico" placeholder="digite o código da ordem de serviço" class="form-control input-md" required="">
+						<input id="cdOrdemServico" name="cdOrdemServico" value="<%=cdOrdemServico%>" class="form-control input-md" required="" readonly="readonly">
 					</div>
 				</div>
 
@@ -37,11 +43,9 @@ function processarInclusao(){
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-4 control-label">Código do Serviço</label>
-					<div class="col-md-3">
-						<input id="cdServico" name="cdServico" type="text" placeholder="digite código do serviço" class="form-control input-md" required="">
-					</div>
-				</div>
+				<label class="col-md-4 control-label">Serviço</label>
+					<div class="col-md-3"><%=ComboSelect.getInstancia().getSelectHtmlServico("")%> </div>
+				</div>				
 				<div class="form-group">
 					<label class="col-md-4 control-label">Qtd Produto Utilizado</label>
 					<div class="col-md-3">

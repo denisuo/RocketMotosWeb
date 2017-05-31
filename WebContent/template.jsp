@@ -35,7 +35,6 @@
 					<li><a href="${pageContext.request.contextPath}\ServletMarcaMoto?evento=">Marca Moto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletModeloMoto?evento=">Modelo Moto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletServico?evento=">Serviço</a></li>
-					<li><a href="${pageContext.request.contextPath}\ServletItemOrdemServico?evento=">Item Ordem Serviço</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletOrdemServico?evento=">Ordem Serviço</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletProduto?evento=">Produto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletCategoriaProduto?evento=">Categoria Produto</a></li>

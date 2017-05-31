@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.dominio.DominioSimNao"%>
 <%@page import="br.com.rocketmotos.entidade.EntidadeOrdemServico"%>
 <%@page import="br.com.rocketmotos.servlet.ServletOrdemServico"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,6 +12,12 @@
 
 </head>
 <script type="text/javascript">
+
+//monta o link para redirecionar para itemOrdemServico com cdOrdemServico do radio button selecionado
+function recuperarLink(){
+	return "${pageContext.request.contextPath}\\ServletItemOrdemServico?evento=consultarTodos&cdOrdemServico="
+		+ $("input[name='cdOrdemServico']:checked").val();
+}
 
 function consultar(){
 	document.getElementById("<%=ServletOrdemServico.NM_EVENTO%>").value = "<%=ServletOrdemServico.NM_EVENTO_CONSULTAR_TODOS%>";
@@ -51,7 +58,7 @@ function exibirInclusao(){
  
     <div class="col-md-6">
         <div class="input-group h2">
-            <input id="cdOrdem" name="cdOrdem" class="form-control" type="text" placeholder="Pesquisar por codigo da ordem de serviço">
+            <input id="cdOrdemServicoBusca" name="cdOrdemServicoBusca" class="form-control" type="text" placeholder="Pesquisar por codigo da ordem de serviço">
             <span class="input-group-btn">
                 <button class="btn btn-primary" type="submit" onclick="consultar();">
                     <span class="glyphicon glyphicon-search"></span>
@@ -76,7 +83,6 @@ function exibirInclusao(){
 				<th>Data</th>
 				<th>Indicador Orçamento</th>
 				<th>Valor</th>
-				<th>Desconto</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -87,9 +93,8 @@ function exibirInclusao(){
 				<td><input type="radio" id="cdOrdemServico" name="cdOrdemServico" value="<%=eServico.getCodigo()%>">&nbsp<%=eServico.getCodigo()%></td>
 				<td><%=eServico.getPlacaMoto()%></td>
 				<td><%=eServico.getData()%></td>
-				<td><%=eServico.getIndicadorOrcamento()%></td>
+				<td><%=DominioSimNao.getInstance().getValor(eServico.getIndicadorOrcamento())%></td>
 				<td><%=eServico.getValor()%></td>
-				<td><%=eServico.getDesconto()%></td>
 			</tr>
 	        
 		<%} %>
@@ -100,8 +105,9 @@ function exibirInclusao(){
 	   <%if(!alOrdemServico.isEmpty()){ %>
 	  <div class="container" align="center">
 	  	<td>
-			<button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>
-			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>
+	  		<input type="button" class="btn btn-warning btn-xs" value="Incluir Itens" onclick='window.location.href=recuperarLink();'> 
+			<!--  <button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>
+			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>-->
 		</td>
 	  <%} %>
 	  </div>

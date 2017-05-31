@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.entidade.EntidadeServico"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="br.com.rocketmotos.util.Constantes"%>
 <%@page import="br.com.rocketmotos.entidade.EntidadeItemOrdemServico"%>
 <%@page import="br.com.rocketmotos.servlet.ServletItemOrdemServico"%>
@@ -8,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consulta de Item por Ordem de Serviço</title>
+<title>Consulta de Itens por Ordem de Serviço</title>
 
 <script src="${pageContext.request.contextPath}\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
 
@@ -44,19 +46,17 @@ function exibirInclusao(){
 
 </script>
 <%
-	ArrayList<EntidadeItemOrdemServico> alItemOrdemServico;
-	
-	alItemOrdemServico = (ArrayList<EntidadeItemOrdemServico>) request.getAttribute(ServletItemOrdemServico.NM_PARAMETRO_ArrayItemOrdemServico);
-	
-	if(alItemOrdemServico == null){
-		alItemOrdemServico = new ArrayList<EntidadeItemOrdemServico>();
-	}
+	ResultSet rsResposta = null;
+
+	String cdOrdemServico = (String) request.getAttribute(ServletItemOrdemServico.NM_PARAMETRO_CodigoOrdemServico);
+	rsResposta =  (ResultSet) request.getAttribute(ServletItemOrdemServico.NM_PARAMETRO_ArrayItemOrdemServico);
+		
 %>
 <body>
 <jsp:include page="/template.jsp"/>
 
 <div id="main" class="container-fluid">
-<h3 class="page-header">Consultar Item por Ordem de Serviço</h3>
+<h3 class="page-header">Consultar Itens</h3>
 <form class="form-horizontal" action="ServletItemOrdemServico" method="post">
 
 <div id="barraPesquisa" class="row">
@@ -65,7 +65,7 @@ function exibirInclusao(){
  
     <div class="col-md-6">
         <div class="input-group h2">
-            <input id="cdOrdemServico" name="cdOrdemServico" class="form-control" type="text" placeholder="Pesquisar por codigo de ordem de serviço">
+            <input id="cdOrdemServico" name="cdOrdemServico" class="form-control" type="text" value="<%=cdOrdemServico%>" readonly="readonly">
             <span class="input-group-btn">
                 <button class="btn btn-primary" id="btnConsultar" name="btnConsultar" type="submit" onclick="consultar();">
                     <span class="glyphicon glyphicon-search"></span>
@@ -81,7 +81,7 @@ function exibirInclusao(){
 <input type="hidden" id="<%=ServletItemOrdemServico.NM_EVENTO%>" name="<%=ServletItemOrdemServico.NM_EVENTO%>" value="">
 	<div class="container">
 	  
-	  <%if(!alItemOrdemServico.isEmpty()){ %>
+	  <%if(rsResposta != null){ %>
 	  <table class="table table-striped">
 		<thead>
 			<tr>
@@ -93,29 +93,35 @@ function exibirInclusao(){
 		</thead>
 		<tbody>
 	    <%
-			for(EntidadeItemOrdemServico eItemOrdemServico : alItemOrdemServico){
+			while(rsResposta.next()){
 				String chaveItemOrdPedido = "";
-				chaveItemOrdPedido = eItemOrdemServico.getCodigoOrdemServico() + Constantes.CAMPO_SERPARADOR_CHAVE_PRIMARIA
-						+ eItemOrdemServico.getCodigoProduto() + Constantes.CAMPO_SERPARADOR_CHAVE_PRIMARIA + eItemOrdemServico.getCodigoServico(); 
+				chaveItemOrdPedido = rsResposta.getString(EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico) + Constantes.CAMPO_SERPARADOR_CHAVE_PRIMARIA
+						+ rsResposta.getString(EntidadeItemOrdemServico.NM_COL_CodigoProduto)  + Constantes.CAMPO_SERPARADOR_CHAVE_PRIMARIA + 
+						rsResposta.getString(EntidadeItemOrdemServico.NM_COL_CodigoServico); 
 		%>
 			<tr>
-				<td><input type="radio" id="chavePrimaria" name="chavePrimaria" value="<%=chaveItemOrdPedido%>">&nbsp<%=eItemOrdemServico.getCodigoOrdemServico()%></td>
-				<td><%=eItemOrdemServico.getCodigoProduto()%></td>
-				<td><%=eItemOrdemServico.getCodigoServico()%></td>
-				<td><%=eItemOrdemServico.getQtdProdutoUtilizado()%></td>
+				<td><input type="radio" id="chavePrimaria" name="chavePrimaria" value="<%=chaveItemOrdPedido%>">&nbsp<%=rsResposta.getString(EntidadeItemOrdemServico.NM_COL_CodigoOrdemServico)%></td>
+				<td><%=rsResposta.getString(EntidadeItemOrdemServico.NM_COL_CodigoProduto)%></td>
+				<td><%=rsResposta.getString(EntidadeServico.NM_COL_Nome)%></td>
+				<td><%=rsResposta.getString(EntidadeItemOrdemServico.NM_COL_QtdProdutoUtilizado)%></td>
 			</tr>
 	        
 		<%} %>
 	    </tbody>
 	  </table>
 	  <%} %>
-	 
-	   <%if(!alItemOrdemServico.isEmpty()){ %>
 	  <div class="container" align="center">
+	  
+	   <%if(rsResposta != null){ %>
 	  	<td>
 			<button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>
 			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>
+			<button id="btnCancelar" name="btnCancelar" class="btn btn-warning btn-xs" onClick="history.go(-1)">Voltar</button>
 		</td>
+	  <%} else {%>
+	  	<td>
+	  		<button id="btnCancelar" name="btnCancelar" class="btn btn-warning btn-xs" onClick="history.go(-1)">Voltar</button>
+	  	</td>
 	  <%} %>
 	  </div>
 	  

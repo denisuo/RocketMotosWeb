@@ -1,6 +1,7 @@
 package br.com.rocketmotos.servlet;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -91,6 +92,17 @@ public class ServletItemOrdemServico extends ServletGenerico {
 	public void exibirInclusao(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		// declara as variaveis
+		String codigoOrdemServico = "";
+		
+		// recupera os parametros do request
+		codigoOrdemServico = request
+				.getParameter(this.NM_PARAMETRO_CodigoOrdemServico);
+		
+		//seta no request
+		request.setAttribute(this.NM_PARAMETRO_CodigoOrdemServico,
+				codigoOrdemServico);
+		
 		// redireciona para a pagina de inclusao
 		this.redirecionarPagina(request, response,
 				this.NM_JSP_INCLUIR_ITEM_ORDEM_SERVICO);
@@ -126,6 +138,10 @@ public class ServletItemOrdemServico extends ServletGenerico {
 
 		// inclui em unico item em ITEM_ORDEM_SERVICO
 		DAOItemOrdemServico.incluir(eItemOrdemServico);
+		
+		//seta no request
+		request.setAttribute(this.NM_PARAMETRO_CodigoOrdemServico,
+				codigoOrdemServico);
 
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 
@@ -137,21 +153,23 @@ public class ServletItemOrdemServico extends ServletGenerico {
 
 		// declara as variaveis
 		String codigoOrdemServico = "";
-		ArrayList<EntidadeItemOrdemServico> alItemOrdemServico;
+		ResultSet rs = null;
 
 		// recupera os parametros do request
 		codigoOrdemServico = (String) request
 				.getParameter(this.NM_PARAMETRO_CodigoOrdemServico);
 
 		// consulta todos os itens por ordem de serviço
-		alItemOrdemServico = DAOItemOrdemServico
-				.consultarTodosItensPorOrdemServico(Integer
+		rs = DAOItemOrdemServico
+				.consultarTodosPorCodigoOrdem(Integer
 						.valueOf(codigoOrdemServico));
 
 		// seta o array de item ordem servico no request para recuperar na jsp
 		// de consulta
 		request.setAttribute(this.NM_PARAMETRO_ArrayItemOrdemServico,
-				alItemOrdemServico);
+				rs);
+		request.setAttribute(this.NM_PARAMETRO_CodigoOrdemServico,
+				codigoOrdemServico);
 
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 	}

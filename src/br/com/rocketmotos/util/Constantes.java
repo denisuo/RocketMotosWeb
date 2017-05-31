@@ -12,4 +12,8 @@ public class Constantes {
 	
 	public static final String Tipo_Pagamento_Cartao = "C";
 	
+	public static final String CD_SIM = "S";
+	
+	public static final String CD_NAO = "N";
+	
 }

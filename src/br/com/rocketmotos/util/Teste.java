@@ -1,26 +1,10 @@
 package br.com.rocketmotos.util;
 
-import java.sql.Date;
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 
-import br.com.rocketmotos.dao.DAOCategoriaProduto;
-import br.com.rocketmotos.dao.DAOItemOrdemServico;
-import br.com.rocketmotos.dao.DAOItemVenda;
-import br.com.rocketmotos.dao.DAOOrdemServico;
-import br.com.rocketmotos.dao.DAOServico;
-import br.com.rocketmotos.dao.DAOMoto;
-import br.com.rocketmotos.dao.DAOProduto;
-import br.com.rocketmotos.dao.DAOVenda;
-import br.com.rocketmotos.entidade.EntidadeCategoriaProduto;
-import br.com.rocketmotos.entidade.EntidadeCliente;
-import br.com.rocketmotos.entidade.EntidadeItemOrdemServico;
-import br.com.rocketmotos.entidade.EntidadeItemVenda;
-import br.com.rocketmotos.entidade.EntidadeOrdemServico;
-import br.com.rocketmotos.entidade.EntidadeServico;
-import br.com.rocketmotos.entidade.EntidadeMoto;
-import br.com.rocketmotos.entidade.EntidadeProduto;
-import br.com.rocketmotos.entidade.EntidadeVenda;
+import br.com.rocketmotos.dominio.DominioSimNao;
+import br.com.rocketmotos.dominio.DominioTipoPagamento;
+import br.com.rocketmotos.regra.RegraNegocioOrdemServico;
 
 
 
@@ -31,12 +15,30 @@ public class Teste {
 	 */
 	public static void main(String[] args) {
 		
-		String dataHoje = new Date(System.currentTimeMillis()).toString();
-		dataHoje = dataHoje.replace("-", "");
+
+		System.out.println("INICIO " + System.currentTimeMillis());
 		
-		System.out.println(dataHoje);
+		Double valorServico = new Double("0.00");
+		Double valorProduto = new Double("25.00");
+		
+		System.out.println("VALOR SERVIÇO - " + valorServico);
+		System.out.println("VALOR PRODUTO - " + valorProduto);
+		System.out.println("VALOR TOTAL - " + (valorServico + valorProduto));
 		
 		
+		try {
+			RegraNegocioOrdemServico.processar("1");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		System.out.println("FIM " + System.currentTimeMillis());
+		
+		
+		
+		//for (String string : DominioTipoPagamento.getInstance().getChaves()) {
+			//System.out.println(DominioTipoPagamento.getInstance().getValor(string));
+		//}
 		
 	}
 }

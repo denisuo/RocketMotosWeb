@@ -31,6 +31,7 @@ public class ServletOrdemServico extends ServletGenerico {
 			.getSimpleName();
 
 	public static final String NM_PARAMETRO_CodigoOrdemServico = "cdOrdemServico";
+	public static final String NM_PARAMETRO_CodigoOrdemServicoBusca = "cdOrdemServicoBusca";
 	public static final String NM_PARAMETRO_PlacaMoto = "placaMoto";
 	public static final String NM_PARAMETRO_Data = "data";
 	public static final String NM_PARAMETRO_IndicadorOrcamento = "indicadorOrcamento";
@@ -130,6 +131,13 @@ public class ServletOrdemServico extends ServletGenerico {
 		// recupera os parametros do request
 		String codigoOrdemServico = (String) request
 				.getParameter(this.NM_PARAMETRO_CodigoOrdemServico);
+		
+		//caso o radio button nao esteja selecionado tenta recuperar o valor da barra de pesquisa
+		if(codigoOrdemServico == null || codigoOrdemServico.equals("")){
+			codigoOrdemServico = request
+					.getParameter(this.NM_PARAMETRO_CodigoOrdemServicoBusca);
+		}
+		
 		String placaMoto = (String) request.getParameter(this.NM_PARAMETRO_PlacaMoto);
 
 		//caso o campo de pesquisa por nome seja preenchido consulta por nome
