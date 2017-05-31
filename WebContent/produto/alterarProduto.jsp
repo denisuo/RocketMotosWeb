@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.select.ComboSelect"%>
 <%@page import="com.sun.org.apache.xerces.internal.impl.dv.dtd.NMTOKENDatatypeValidator"%>
 <%@page import="br.com.rocketmotos.servlet.ServletProduto"%>
 <html lang="pt-br">
@@ -54,10 +55,8 @@ function processarAlteracao(){
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-4 control-label">Categoria</label>
-					<div class="col-md-3">
-						<input id="cdCategoriaProduto" name="cdCategoriaProduto" type="text" value="<%=cdCategoriaProduto%>" placeholder="digite o código da categoria do produto..." class="form-control input-md" required="">
-					</div>
+				<label class="col-md-4 control-label" for="selectbasic">Categoria</label>
+					<div class="col-md-3"><%=ComboSelect.getInstancia().getSelectHtmlCategoriaProduto(cdCategoriaProduto)%> </div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label">Valor</label>

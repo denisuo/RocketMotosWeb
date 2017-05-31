@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.select.ComboSelect"%>
 <%@page import="br.com.rocketmotos.servlet.ServletMoto"%>
 <html lang="pt-br">
 <head>
@@ -58,11 +59,9 @@ function processarAlteracao(){
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-4 control-label">Modelo da Moto</label>
-					<div class="col-md-3">
-						<input id="cdModeloMoto" name="cdModeloMoto" type="text" value="<%=codigoModelo%>" required="" class="form-control input-md" readonly="readonly">
-					</div>
-				</div>					
+				<label class="col-md-4 control-label" for="selectbasic">Modelo</label>
+					<div class="col-md-3"><%=ComboSelect.getInstancia().getSelectHtmlModeloMoto(codigoModelo)%> </div>
+				</div>						
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">

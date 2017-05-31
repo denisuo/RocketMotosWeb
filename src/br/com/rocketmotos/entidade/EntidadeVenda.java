@@ -11,8 +11,8 @@ public class EntidadeVenda {
 	public static final String NM_COL_CodigoVenda = "VENDA_CD";
 	public static final String NM_COL_NumeroDocumentoCliente = EntidadeCliente.NM_COL_NumeroDocumento;
 	public static final String NM_COL_Data = "DATA";
-	public static final String NM_COL_Valor = "VALOR";
-	public static final String NM_COL_TipoPagamento = "TIPO";
+	public static final String NM_COL_Valor = "VENDA_VALOR";
+	public static final String NM_COL_TipoPagamento = "VENDA_TIPO";
 	public static final String NM_COL_Desconto = "DESCONTO";
 
 	private int codigo;

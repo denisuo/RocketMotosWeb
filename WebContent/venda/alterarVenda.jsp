@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alteração de Produto</title>
+<title>Alteração de Venda</title>
 
 <script type="text/javascript">
 
@@ -28,7 +28,7 @@ function processarAlteracao(){
 <body>
 <jsp:include page="/template.jsp"/>
 	<div id="main" class="container-fluid">
-		<h3 class="page-header">Alterar Produto</h3>
+		<h3 class="page-header">Alterar Venda</h3>
 		<form class="form-horizontal" action="ServletVenda" method="post">
 		<input type="hidden" id="<%=ServletVenda.NM_EVENTO%>" name="<%=ServletVenda.NM_EVENTO%>" value="">
 		

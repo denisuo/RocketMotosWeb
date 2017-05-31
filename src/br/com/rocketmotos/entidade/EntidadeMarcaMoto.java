@@ -7,7 +7,7 @@ public class EntidadeMarcaMoto {
 	public static final String NM_TABELA = "MARCA_MOTO";
 	
 	public static final String NM_COL_CodigoMarcaMoto = "MARCA_MOTO_CD";
-	public static final String NM_COL_Nome = "NOME";
+	public static final String NM_COL_Nome = "MARCA_MOTO_NOME";
 
 	private int codigo;
 	private String nome;

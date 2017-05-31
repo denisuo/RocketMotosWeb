@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.select.ComboSelect"%>
 <%@page import="br.com.rocketmotos.servlet.ServletMoto"%>
 <html lang="pt-br">
 <head>
@@ -49,11 +50,9 @@ function processarInclusao(){
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-4 control-label">Modelo Moto</label>
-					<div class="col-md-3">
-						<input id="cdModeloMoto" name="cdModeloMoto" type="text" placeholder="digite o codigo do modelo" class="form-control input-md" required="" maxlength="2">
-					</div>
-				</div>				
+				<label class="col-md-4 control-label" for="selectbasic">Modelo</label>
+					<div class="col-md-3"><%=ComboSelect.getInstancia().getSelectHtmlModeloMoto("")%> </div>
+				</div>			
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">

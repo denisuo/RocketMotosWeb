@@ -7,9 +7,9 @@ public class EntidadeServico {
 	public static final String NM_TABELA = "SERVICO";
 
 	public static final String NM_COL_CodigoServico = "SERVICO_CD";
-	public static final String NM_COL_Nome = "NOME";
-	public static final String NM_COL_Descricao = "DESCRICAO";
-	public static final String NM_COL_Valor = "VALOR";
+	public static final String NM_COL_Nome = "SERVICO_NOME";
+	public static final String NM_COL_Descricao = "SERVICO_DESCRICAO";
+	public static final String NM_COL_Valor = "SERVICO_VALOR";
 
 	private int codigoServico;
 	private String nome;

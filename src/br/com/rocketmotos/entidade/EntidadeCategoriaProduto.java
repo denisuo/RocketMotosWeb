@@ -7,8 +7,8 @@ public class EntidadeCategoriaProduto {
 	public static final String NM_TABELA = "CATEGORIA_PRODUTO";
 
 	public static final String NM_COL_CodigoCategoriaProduto = "CATEGORIA_CD";
-	public static final String NM_COL_Nome = "NOME";
-	public static final String NM_COL_Descricao = "DESCRICAO";
+	public static final String NM_COL_Nome = "CATEGORIA_NOME";
+	public static final String NM_COL_Descricao = "CATEGORIA_DESCRICAO";
 
 	private int codigo;
 	private String nome;

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="br.com.rocketmotos.select.ComboSelect"%>
 <%@page import="br.com.rocketmotos.servlet.ServletModeloMoto"%>
 <html lang="pt-br">
 <head>
@@ -37,11 +38,9 @@ function processarInclusao(){
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-4 control-label">Código da Marca</label>
-					<div class="col-md-3">
-						<input id="cdMarcaMoto" name="cdMarcaMoto" type="number" placeholder="código da marca ex: 1- YAMAHA, 2- HONDA, 3- SUZUKI" required="" class="form-control input-md">
-					</div>
-				</div>								
+				<label class="col-md-4 control-label" for="selectbasic">Marca</label>
+					<div class="col-md-3"><%=ComboSelect.getInstancia().getSelectHtmlMarcaMoto("")%> </div>
+				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
