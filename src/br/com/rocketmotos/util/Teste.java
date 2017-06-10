@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import br.com.rocketmotos.dominio.DominioSimNao;
 import br.com.rocketmotos.dominio.DominioTipoPagamento;
 import br.com.rocketmotos.regra.RegraNegocioOrdemServico;
+import br.com.rocketmotos.relatorio.RelatorioPDF;
 
 
 
@@ -27,7 +28,8 @@ public class Teste {
 		
 		
 		try {
-			RegraNegocioOrdemServico.processar("1");
+			RelatorioPDF relatorio = new RelatorioPDF();
+			relatorio.gerar("1");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

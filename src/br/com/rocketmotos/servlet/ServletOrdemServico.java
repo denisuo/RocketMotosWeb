@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.rocketmotos.dao.DAOOrdemServico;
 import br.com.rocketmotos.entidade.EntidadeOrdemServico;
+import br.com.rocketmotos.regra.RegraNegocioOrdemServico;
+import br.com.rocketmotos.relatorio.RelatorioPDF;
 
 /**
  * Servlet implementation class ServletOrdemServico
@@ -27,6 +29,10 @@ public class ServletOrdemServico extends ServletGenerico {
 
 	private static final String NM_JSP_ALTERAR_ORDEM_SERVICO = "/ordemServico/alterarOrdemServico.jsp";
 
+	public static final String NM_EVENTO_GERAR_RELATORIO = "gerarRelatorio";
+	
+	public static final String NM_EVENTO_CALCULAR_ORDEM_SERVICO = "calcularOrdemServico";
+	
 	private static final String NM_SERVLET = ServletOrdemServico.class
 			.getSimpleName();
 
@@ -77,6 +83,12 @@ public class ServletOrdemServico extends ServletGenerico {
 		} else if (acao != null
 				&& acao.equalsIgnoreCase(this.NM_EVENTO_PROCESSAR_ALTERACAO)) {
 			this.processarAlteracao(request, response);
+		} else if (acao != null
+				&& acao.equalsIgnoreCase(this.NM_EVENTO_GERAR_RELATORIO)) {
+			this.gerarRelatorio(request, response);
+		} else if (acao != null
+				&& acao.equalsIgnoreCase(this.NM_EVENTO_CALCULAR_ORDEM_SERVICO)) {
+			this.calcularOrdemServico(request, response);
 		} else {
 			// caso nao tenha nenhum evento, redireciona para a pagina de
 			// consulta
@@ -226,17 +238,48 @@ public class ServletOrdemServico extends ServletGenerico {
 		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
 	}
 	
-	private String gerarNumeroOrdemServico(HttpServletRequest request,
-			HttpServletResponse response, String placaMoto) {
+	//método responsavel por chemar a classe que gera o relatorio
+	private void gerarRelatorio(HttpServletRequest request,
+			HttpServletResponse response) {
 		
-		String nuOrdemServico = "";
-		String dataHoje = new Date(System.currentTimeMillis()).toString();
-		dataHoje = dataHoje.replace("-", "");
+		// declara as variaveis
+		String codigoOrdemServico = "";
 		
-		nuOrdemServico = dataHoje + placaMoto;
-		EntidadeOrdemServico eOrdemServico = DAOOrdemServico.consultarPorCodigo(nuOrdemServico);
+		// recupera os parametros do request
+		codigoOrdemServico = request.getParameter(this.NM_PARAMETRO_CodigoOrdemServico);
 		
-		return new String("");
+		//chama a classe que gera o relatório PDF
+		if(codigoOrdemServico != null && !codigoOrdemServico.equals("")){
+			try {
+				RelatorioPDF relatorio = new RelatorioPDF();
+				relatorio.gerar(codigoOrdemServico);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				System.out.println(e.getCause());
+			} 
+		}
+	}
+	
+	private void calcularOrdemServico(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException{
+		
+		// declara as variaveis
+		String codigoOrdemServico = "";
+		
+		// recupera os parametros do request
+		codigoOrdemServico = request.getParameter(this.NM_PARAMETRO_CodigoOrdemServico);
+		
+		try {
+			//chama a regra que ira fechar a ordem de servico
+			RegraNegocioOrdemServico regra = new RegraNegocioOrdemServico();
+			regra.processar(codigoOrdemServico);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}
+		
+		this.redirecionarPagina(request, response, this.NM_JSP_CONSULTAR);
+		
 	}
 
 }

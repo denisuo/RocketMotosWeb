@@ -35,6 +35,17 @@ function exibirInclusao(){
 	document.getElementById("<%=ServletOrdemServico.NM_EVENTO%>").value = "<%=ServletOrdemServico.NM_EVENTO_EXIBIR_INCLUSAO%>";
 }
 
+function gerarPdf(){
+	$("input[name='cdOrdemServico']:checked").val();
+	document.getElementById("<%=ServletOrdemServico.NM_EVENTO%>").value = "<%=ServletOrdemServico.NM_EVENTO_GERAR_RELATORIO%>";
+}
+
+function fecharOrdemServico(){
+	$("input[name='cdOrdemServico']:checked").val();
+	document.getElementById("<%=ServletOrdemServico.NM_EVENTO%>").value = "<%=ServletOrdemServico.NM_EVENTO_CALCULAR_ORDEM_SERVICO%>";
+}
+
+
 </script>
 <%
 	ArrayList<EntidadeOrdemServico> alOrdemServico;
@@ -72,6 +83,7 @@ function exibirInclusao(){
 </div>
 
 <input type="hidden" id="<%=ServletOrdemServico.NM_EVENTO%>" name="<%=ServletOrdemServico.NM_EVENTO%>" value="">
+<input type="hidden" id="cdOrdemHidden" name="cdOrdemHidden" value="">
 	<div class="container">
 	  
 	  <%if(!alOrdemServico.isEmpty()){ %>
@@ -105,7 +117,9 @@ function exibirInclusao(){
 	   <%if(!alOrdemServico.isEmpty()){ %>
 	  <div class="container" align="center">
 	  	<td>
-	  		<input type="button" class="btn btn-warning btn-xs" value="Incluir Itens" onclick='window.location.href=recuperarLink();'> 
+	  		<input type="button" class="btn btn-warning btn-xs" value="Incluir Itens" onclick='window.location.href=recuperarLink();'>
+	  		<button class="btn btn-warning btn-xs" type="submit" onclick="fecharOrdemServico();">Fechar OS</button>
+	  		<button class="btn btn-warning btn-xs" type="submit" onclick="gerarPdf();">Gerar PDF</button>
 			<!--  <button id="btnAlterar" name="btnAlterar" class="btn btn-warning btn-xs" onclick="exibirAlteracao();">Alterar</button>
 			<button id="btnExcluir" name="btnExcluir" class="btn btn-danger btn-xs" onclick="excluir();">Excluir</button>-->
 		</td>
