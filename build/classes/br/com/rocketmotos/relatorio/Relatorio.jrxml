@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Relatorio" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c259b53-6083-4bd3-8389-cb5ef1851230">
+	<property name="ireport.zoom" value="1.1000000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="DATA" class="java.lang.String"/>
+	<field name="LISTA_ITENS" class="java.lang.String"/>
+	<field name="TITULO" class="java.lang.String"/>
+	<field name="VALOR_TOTAL" class="java.lang.String"/>
+	<field name="CD_ORDEM" class="java.lang.String"/>
+	<field name="CD_PRODUTO" class="java.lang.String"/>
+	<field name="DSC_PRODUTO" class="java.lang.String"/>
+	<field name="QTD_UTILIZADO" class="java.lang.String"/>
+	<field name="VALOR_PRODUTO" class="java.lang.String"/>
+	<title>
+		<band height="155" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement x="216" y="77" width="106" height="20" forecolor="#435770" backcolor="#435770" uuid="ac207eeb-5a75-43ce-b99c-96d2e581a8cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="51" width="387" height="20" forecolor="#435770" backcolor="#435770" uuid="ea68a532-f678-45ec-b6e7-93a819a8c70f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TITULO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="76" y="21" width="387" height="20" forecolor="#435770" backcolor="#435770" uuid="d4b99195-b3fe-483e-af4e-276790df3957"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ROCKET MOTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="135" width="53" height="20" forecolor="#435770" backcolor="#435770" uuid="3b39e2a6-40eb-487d-bb1d-37f186b11866"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="135" width="72" height="20" forecolor="#435770" backcolor="#435770" uuid="94334c36-b77e-4b79-a22e-c1e016ec638b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="135" width="72" height="20" forecolor="#435770" backcolor="#435770" uuid="c3864c24-ce02-463d-a2cf-6369bb00e0a6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Valor Und]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="27" height="20" forecolor="#435770" backcolor="#435770" uuid="18f2a23a-9c17-413b-bad7-8c1cdbb55d6e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[OS:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="27" y="1" width="239" height="20" forecolor="#435770" backcolor="#435770" uuid="acdaf8c9-cb66-4daf-b345-d13b5008328a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CD_ORDEM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="391" y="135" width="32" height="20" forecolor="#435770" backcolor="#435770" uuid="a4ea5c7d-597e-46b0-b157-855fbc28dbe6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Qtd]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="26">
+			<line>
+				<reportElement x="16" y="24" width="524" height="1" isRemoveLineWhenBlank="true" uuid="f0dc1168-d27d-4da8-a1fd-3baf320c598f">
+					<printWhenExpression><![CDATA[$F{CD_PRODUTO} != null && !$F{CD_PRODUTO}.equals("")]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="16" y="2" width="108" height="21" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" forecolor="#435770" backcolor="#435770" uuid="5d7c3fd6-b408-4c79-b3bc-6bfa980fe3f5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CD_PRODUTO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="124" y="2" width="267" height="21" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" forecolor="#435770" backcolor="#435770" uuid="63fb2c1a-09c8-4d03-8f8b-ce7e195c1200"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSC_PRODUTO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="391" y="2" width="32" height="21" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" forecolor="#435770" backcolor="#435770" uuid="6f2ac84e-e11a-4e7a-b3f1-84d11ef48f78"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTD_UTILIZADO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="423" y="2" width="72" height="21" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" forecolor="#435770" backcolor="#435770" uuid="b0f3c49e-775a-4829-a5e8-33b2d10e9c7e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR_PRODUTO}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{VALOR_TOTAL} != null && !$F{VALOR_TOTAL}.equals("")]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="363" y="25" width="192" height="20" isRemoveLineWhenBlank="true" forecolor="#435770" backcolor="#435770" uuid="12582e16-5cd2-4ab8-9cbf-872ec46fb12d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL   " + $F{VALOR_TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
