@@ -38,7 +38,6 @@
 					<li><a href="${pageContext.request.contextPath}\ServletOrdemServico?evento=">Ordem Serviço</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletProduto?evento=">Produto</a></li>
 					<li><a href="${pageContext.request.contextPath}\ServletCategoriaProduto?evento=">Categoria Produto</a></li>
-					<li><a href="${pageContext.request.contextPath}\ServletVenda?evento=">Venda</a></li>
 				</ul>
 			</div>
 		</div>

@@ -18,6 +18,7 @@ public class DAOMoto extends Conexao {
 
 	public static void incluir(EntidadeMoto eMoto) {
 
+		//monta SQL para inserir em MOTO
 		String sql = "INSERT INTO " + EntidadeMoto.NM_TABELA + " ("
 				+ EntidadeMoto.NM_COL_PlacaMoto + ", "
 				+ EntidadeMoto.NM_COL_Ano + ", " + EntidadeMoto.NM_COL_Cor
@@ -27,9 +28,10 @@ public class DAOMoto extends Conexao {
 				+ eMoto.getCor() + "','" + eMoto.getNumeroDocumentoCliente()
 				+ "','" + eMoto.getCodigoModeloMoto() + "')";
 
-		// eMoto.getDocumento()
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
@@ -47,9 +49,11 @@ public class DAOMoto extends Conexao {
 				+ EntidadeMoto.NM_COL_PlacaMoto + " = '" + eMoto.getPlaca()
 				+ "' ";
 
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -59,11 +63,14 @@ public class DAOMoto extends Conexao {
 
 	public static void excluir(String placaMoto) {
 
+		//monta SQL para excluir em MOTO
 		String sql = "DELETE FROM " + EntidadeMoto.NM_TABELA + " WHERE "
 				+ EntidadeMoto.NM_COL_PlacaMoto + " = '" + placaMoto + "' ";
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -88,9 +95,11 @@ public class DAOMoto extends Conexao {
 				+ EntidadeMoto.NM_COL_CodigoModeloMoto + ")";
 
 		ArrayList<EntidadeMoto> listaRetorno = new ArrayList<EntidadeMoto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeMoto eMoto = new EntidadeMoto();
@@ -119,14 +128,17 @@ public class DAOMoto extends Conexao {
 	public static ArrayList<EntidadeMoto> consultarPorNumeroDocumentoCliente(
 			String numeroDocumentoCliente) {
 
+		//monta SQL de consulta
 		String sql = "SELECT * FROM " + EntidadeMoto.NM_TABELA + " WHERE "
 				+ EntidadeMoto.NM_COL_NumeroDocumentoCliente + " = "
 				+ numeroDocumentoCliente;
 
 		ArrayList<EntidadeMoto> listaRetorno = new ArrayList<EntidadeMoto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL,  recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeMoto eMoto = new EntidadeMoto();
@@ -150,12 +162,15 @@ public class DAOMoto extends Conexao {
 
 	public static ArrayList<EntidadeMoto> consultarPorPlaca(String placa) {
 
+		//monta SQL de consulta
 		String sql = "SELECT * FROM " + EntidadeMoto.NM_TABELA + " WHERE "
 				+ EntidadeMoto.NM_COL_PlacaMoto + " = '" + placa + "'";
 		ArrayList<EntidadeMoto> listaRetorno = new ArrayList<EntidadeMoto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL,  recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeMoto eMoto = new EntidadeMoto();

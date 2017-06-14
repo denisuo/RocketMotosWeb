@@ -18,6 +18,7 @@ public class DAOModeloMoto extends Conexao {
 
 	public static void incluir(EntidadeModeloMoto eModeloMoto) {
 
+		//monta SQL para inserir em MODELO_MOTO
 		String sql = "INSERT INTO " + EntidadeModeloMoto.NM_TABELA + " ("
 				+ EntidadeModeloMoto.NM_COL_Nome + ", "
 				+ EntidadeModeloMoto.NM_COL_CodigoMarcaMoto + ", "
@@ -25,9 +26,11 @@ public class DAOModeloMoto extends Conexao {
 				+ eModeloMoto.getNome() + "', "
 				+ eModeloMoto.getCodigoMarcaMoto() + ", '"
 				+ eModeloMoto.getCilindrada() + "')";
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
@@ -37,8 +40,8 @@ public class DAOModeloMoto extends Conexao {
 	}
 
 	public static void alterar(EntidadeModeloMoto eModeloMoto) {
-		boolean retorno = false;
 
+		//monta SQL para alterar em MODELO_MOTO
 		String sql = "UPDATE " + EntidadeModeloMoto.NM_TABELA + " SET "
 				+ EntidadeModeloMoto.NM_COL_Nome + " = '"
 				+ eModeloMoto.getNome() + "', "
@@ -48,9 +51,12 @@ public class DAOModeloMoto extends Conexao {
 				+ eModeloMoto.getCodigoMarcaMoto() + " WHERE "
 				+ EntidadeModeloMoto.NM_COL_CodigoModeloMoto + " = "
 				+ eModeloMoto.getCodigoModeloMoto();
+		
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -59,15 +65,17 @@ public class DAOModeloMoto extends Conexao {
 	}
 
 	public static void excluir(Integer codigoModeloMoto) {
-
+		
+		//monta SQL para excluir em MODELO_MOTO
 		String sql = "DELETE FROM " + EntidadeModeloMoto.NM_TABELA + " WHERE "
 				+ EntidadeModeloMoto.NM_COL_CodigoModeloMoto + " = "
 				+ codigoModeloMoto;
 
-		// DELETE FROM `modelo_moto` WHERE MODELO_MOTO_CD = 2
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -90,9 +98,11 @@ public class DAOModeloMoto extends Conexao {
 				+ EntidadeModeloMoto.NM_COL_CodigoMarcaMoto + ")";
 
 		ArrayList<EntidadeModeloMoto> listaRetorno = new ArrayList<EntidadeModeloMoto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL,  recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeModeloMoto eModeloMoto = new EntidadeModeloMoto();
@@ -122,13 +132,16 @@ public class DAOModeloMoto extends Conexao {
 	public static EntidadeModeloMoto consultarPorCodigoModelo(
 			Integer codigoModeloMoto) {
 
+		//monta SQL de consulta
 		String sql = "SELECT * FROM " + EntidadeModeloMoto.NM_TABELA
 				+ " WHERE " + EntidadeModeloMoto.NM_COL_CodigoModeloMoto
 				+ " = " + codigoModeloMoto;
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		EntidadeModeloMoto eModeloMoto = new EntidadeModeloMoto();
 		try {
+			//executa SQL e recupera o result set e itera a resposta para retornar a entidade
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				eModeloMoto
@@ -152,13 +165,16 @@ public class DAOModeloMoto extends Conexao {
 	public static ArrayList<EntidadeModeloMoto> consultarPorCilindrada(
 			String cilindrada) {
 
+		//monta SQL de consulta 
 		String sql = "SELECT * FROM " + EntidadeModeloMoto.NM_TABELA
 				+ " WHERE " + EntidadeModeloMoto.NM_COL_Cilindrada + " = '"
 				+ cilindrada + "'";
 		ArrayList<EntidadeModeloMoto> listaRetorno = new ArrayList<EntidadeModeloMoto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL,  recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeModeloMoto eModeloMoto = new EntidadeModeloMoto();

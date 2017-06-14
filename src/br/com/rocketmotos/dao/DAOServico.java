@@ -16,7 +16,7 @@ public class DAOServico extends Conexao {
 	}
 
 	public static void incluir(EntidadeServico eServico) {
-
+		//monta SQL para inserir em SERVICO
 		String sql = "INSERT INTO " + EntidadeServico.NM_TABELA + " ("
 				+ EntidadeServico.NM_COL_CodigoServico + ", "
 				+ EntidadeServico.NM_COL_Nome + ", "
@@ -26,9 +26,10 @@ public class DAOServico extends Conexao {
 				+ "','" + eServico.getDescricao() + "'," + eServico.getValor()
 				+ ")";
 
-		// eServico.getDocumento()
+		//prepara SQP
 		PreparedStatement stmt = getPreparedStatement(sql);
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
@@ -37,6 +38,7 @@ public class DAOServico extends Conexao {
 
 	public static void alterar(EntidadeServico eServico) {
 
+		//monta SQL para alterar em SERVICO
 		String sql = "UPDATE " + EntidadeServico.NM_TABELA + " SET "
 				+ EntidadeServico.NM_COL_Nome + " = '" + eServico.getNome()
 				+ "', " + EntidadeServico.NM_COL_Descricao + " = '"
@@ -45,9 +47,11 @@ public class DAOServico extends Conexao {
 				+ " WHERE " + EntidadeServico.NM_COL_CodigoServico + " = "
 				+ eServico.getCodigoServico();
 
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -56,12 +60,15 @@ public class DAOServico extends Conexao {
 	}
 
 	public static void excluir(Integer codigoServico) {
-
+		
+		//monta SQL para excluir em SERVICO
 		String sql = "DELETE FROM " + EntidadeServico.NM_TABELA + " WHERE "
 				+ EntidadeServico.NM_COL_CodigoServico + " = " + codigoServico;
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -71,11 +78,14 @@ public class DAOServico extends Conexao {
 
 	public static ArrayList<EntidadeServico> consultarTodos() {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeServico.NM_TABELA;
 		ArrayList<EntidadeServico> listaRetorno = new ArrayList<EntidadeServico>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeServico eServico = new EntidadeServico();
@@ -100,13 +110,16 @@ public class DAOServico extends Conexao {
 	public static EntidadeServico consultarPorCodigo(
 			String codigoServico) {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeServico.NM_TABELA + " WHERE "
 				+ EntidadeServico.NM_COL_CodigoServico + " = " + codigoServico;
 
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 		EntidadeServico eServico = new EntidadeServico();
 
 		try {
+			//executa SQL, recupera o result set para montar a entidade de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				eServico.setCodigoServico(Integer.valueOf(rs
@@ -135,6 +148,7 @@ public class DAOServico extends Conexao {
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeServico eServico = new EntidadeServico();

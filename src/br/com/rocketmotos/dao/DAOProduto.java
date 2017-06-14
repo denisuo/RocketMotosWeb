@@ -18,6 +18,7 @@ public class DAOProduto extends Conexao {
 
 	public static void incluir(EntidadeProduto eProduto) {
 
+		//monta SQL para inserir em PRODUTO
 		String sql = "INSERT INTO " + EntidadeProduto.NM_TABELA + " ("
 				+ EntidadeProduto.NM_COL_CodigoProduto + ", "
 				+ EntidadeProduto.NM_COL_Nome + ", "
@@ -32,9 +33,10 @@ public class DAOProduto extends Conexao {
 				+ "," + eProduto.getValor() + "," + eProduto.getQuantidade()
 				+ ")";
 
-		// eProduto.getDocumento()
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
@@ -43,6 +45,7 @@ public class DAOProduto extends Conexao {
 
 	public static void alterar(EntidadeProduto eProduto) {
 
+		//monta SQL para alterar em PRODUTO
 		String sql = "UPDATE " + EntidadeProduto.NM_TABELA + " SET "
 				+ EntidadeProduto.NM_COL_Nome + " = '" + eProduto.getNome()
 				+ "', " + EntidadeProduto.NM_COL_Descricao + " = '"
@@ -57,9 +60,11 @@ public class DAOProduto extends Conexao {
 				+ EntidadeProduto.NM_COL_CodigoProduto + " = '"
 				+ eProduto.getCodigoProduto() + "'";
 
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -69,12 +74,15 @@ public class DAOProduto extends Conexao {
 
 	public static void excluir(String codigoProduto) {
 
+		//monta SQL para excluir em PRODUTO
 		String sql = "DELETE FROM " + EntidadeProduto.NM_TABELA + " WHERE "
 				+ EntidadeProduto.NM_COL_CodigoProduto + " = '" + codigoProduto
 				+ "' ";
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -84,11 +92,14 @@ public class DAOProduto extends Conexao {
 
 	public static ArrayList<EntidadeProduto> consultarTodos() {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeProduto.NM_TABELA;
 		ArrayList<EntidadeProduto> listaRetorno = new ArrayList<EntidadeProduto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeProduto eProduto = new EntidadeProduto();
@@ -119,13 +130,16 @@ public class DAOProduto extends Conexao {
 	public static ArrayList<EntidadeProduto> consultarPorCodigo(
 			String codigoProduto) {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeProduto.NM_TABELA + " WHERE "
 				+ EntidadeProduto.NM_COL_CodigoProduto + " = " + codigoProduto;
 
 		ArrayList<EntidadeProduto> listaRetorno = new ArrayList<EntidadeProduto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeProduto eProduto = new EntidadeProduto();
@@ -156,13 +170,16 @@ public class DAOProduto extends Conexao {
 	public static ArrayList<EntidadeProduto> consultarPorNomeProduto(
 			String nomeProduto) {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeProduto.NM_TABELA + " WHERE "
 				+ EntidadeProduto.NM_COL_Nome + " LIKE '%" + nomeProduto + "%'";
 
 		ArrayList<EntidadeProduto> listaRetorno = new ArrayList<EntidadeProduto>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeProduto eProduto = new EntidadeProduto();

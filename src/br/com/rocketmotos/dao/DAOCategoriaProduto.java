@@ -18,14 +18,18 @@ public class DAOCategoriaProduto extends Conexao {
 
 	public static void incluir(EntidadeCategoriaProduto eCategoriaProduto) {
 
+		//monta SQL para inserir em CATEGORIA_PRODUTO
 		String sql = "INSERT INTO " + EntidadeCategoriaProduto.NM_TABELA + " ("
 				+ EntidadeCategoriaProduto.NM_COL_Nome + ", "
 				+ EntidadeCategoriaProduto.NM_COL_Descricao + ") values ('"
 				+ eCategoriaProduto.getNome() + "', '"
 				+ eCategoriaProduto.getDescricao() + "')";
+		
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
@@ -34,6 +38,7 @@ public class DAOCategoriaProduto extends Conexao {
 
 	public static void alterar(EntidadeCategoriaProduto eCategoriaProduto) {
 
+		//monta SQL para alterar em CATEGORIA_PRODUTO
 		String sql = "UPDATE " + EntidadeCategoriaProduto.NM_TABELA + " SET "
 				+ EntidadeCategoriaProduto.NM_COL_Nome + " = '"
 				+ eCategoriaProduto.getNome() + "', "
@@ -41,9 +46,12 @@ public class DAOCategoriaProduto extends Conexao {
 				+ eCategoriaProduto.getDescricao() + "' WHERE "
 				+ EntidadeCategoriaProduto.NM_COL_CodigoCategoriaProduto
 				+ " = " + eCategoriaProduto.getCodigo();
+		
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -53,13 +61,17 @@ public class DAOCategoriaProduto extends Conexao {
 
 	public static void excluir(Integer codigoCategoriaProduto) {
 
+		//monta SQL para excluir em CATEGORIA_PRODUTO
 		String sql = "DELETE FROM " + EntidadeCategoriaProduto.NM_TABELA
 				+ " WHERE "
 				+ EntidadeCategoriaProduto.NM_COL_CodigoCategoriaProduto
 				+ " = " + codigoCategoriaProduto;
+		
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -69,11 +81,15 @@ public class DAOCategoriaProduto extends Conexao {
 
 	public static ArrayList<EntidadeCategoriaProduto> consultarTodos() {
 
+		//monta SQL de consulta 
 		String sql = "SELECT * FROM " + EntidadeCategoriaProduto.NM_TABELA;
 		ArrayList<EntidadeCategoriaProduto> listaRetorno = new ArrayList<EntidadeCategoriaProduto>();
+		
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeCategoriaProduto eCategoriaProduto = new EntidadeCategoriaProduto();
@@ -98,14 +114,18 @@ public class DAOCategoriaProduto extends Conexao {
 	public static ArrayList<EntidadeCategoriaProduto> consultarPorCodigo(
 			Integer codigoCategoriaProduto) {
 
+		//monta SQL de consulta por codigo 
 		String sql = "SELECT * FROM " + EntidadeCategoriaProduto.NM_TABELA
 				+ " WHERE "
 				+ EntidadeCategoriaProduto.NM_COL_CodigoCategoriaProduto
 				+ " = " + codigoCategoriaProduto;
 		ArrayList<EntidadeCategoriaProduto> listaRetorno = new ArrayList<EntidadeCategoriaProduto>();
+		
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL,  recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeCategoriaProduto eCategoriaProduto = new EntidadeCategoriaProduto();
@@ -129,15 +149,18 @@ public class DAOCategoriaProduto extends Conexao {
 	
 	public static ArrayList<EntidadeCategoriaProduto> consultarPorNome(
 			String nomeCategoria) {
-
+		//monta SQL de consulta por nome da categoria
 		String sql = "SELECT * FROM " + EntidadeCategoriaProduto.NM_TABELA
 				+ " WHERE "
 				+ EntidadeCategoriaProduto.NM_COL_Nome
 				+ " LIKE '%" + nomeCategoria + "%'";
 		ArrayList<EntidadeCategoriaProduto> listaRetorno = new ArrayList<EntidadeCategoriaProduto>();
+		
+		//prepara sql
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL,  recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeCategoriaProduto eCategoriaProduto = new EntidadeCategoriaProduto();

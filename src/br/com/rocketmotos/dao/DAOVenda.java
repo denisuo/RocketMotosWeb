@@ -18,6 +18,7 @@ public class DAOVenda extends Conexao {
 
 	public static void incluir(EntidadeVenda eVenda) {
 
+		//monta SQL para inserir em VENDA
 		String sql = "INSERT INTO " + EntidadeVenda.NM_TABELA + " ("
 				+ EntidadeVenda.NM_COL_CodigoVenda + ", "
 				+ EntidadeVenda.NM_COL_NumeroDocumentoCliente + ", "
@@ -27,9 +28,11 @@ public class DAOVenda extends Conexao {
 				+ eVenda.getCodigo() + ",'" + eVenda.getDocumentoCliente()
 				+ "','" + eVenda.getData() + "'," + eVenda.getValor() + ",'"
 				+ eVenda.getTipoPagamento() + "'," + eVenda.getDesconto() + ")";
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir em " + NM_ENTIDADE);
@@ -38,6 +41,7 @@ public class DAOVenda extends Conexao {
 
 	public static void alterar(EntidadeVenda eVenda) {
 
+		//monta SQL para alterar em VENDA
 		String sql = "UPDATE " + EntidadeVenda.NM_TABELA + " SET "
 				+ EntidadeVenda.NM_COL_Valor + " = " + eVenda.getValor() + ", "
 				+ EntidadeVenda.NM_COL_TipoPagamento + " = '"
@@ -46,9 +50,11 @@ public class DAOVenda extends Conexao {
 				+ " WHERE " + EntidadeVenda.NM_COL_CodigoVenda + " = "
 				+ eVenda.getCodigo();
 
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -58,11 +64,14 @@ public class DAOVenda extends Conexao {
 
 	public static void excluir(Integer codigoVenda) {
 
+		//monta SQL para excluir em VENDA
 		String sql = "DELETE FROM " + EntidadeVenda.NM_TABELA + " WHERE "
 				+ EntidadeVenda.NM_COL_CodigoVenda + " = " + codigoVenda;
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -72,11 +81,14 @@ public class DAOVenda extends Conexao {
 
 	public static ArrayList<EntidadeVenda> consultarTodos() {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeVenda.NM_TABELA;
 		ArrayList<EntidadeVenda> listaRetorno = new ArrayList<EntidadeVenda>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeVenda eVenda = new EntidadeVenda();
@@ -106,14 +118,17 @@ public class DAOVenda extends Conexao {
 	public static ArrayList<EntidadeVenda> consultarPorCodigoVenda(
 			String codigoVenda) {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeVenda.NM_TABELA + " WHERE "
 				+ EntidadeVenda.NM_COL_CodigoVenda + " = "
 				+ codigoVenda;
 
 		ArrayList<EntidadeVenda> listaRetorno = new ArrayList<EntidadeVenda>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeVenda eVenda = new EntidadeVenda();
@@ -143,13 +158,16 @@ public class DAOVenda extends Conexao {
 	public static ArrayList<EntidadeVenda> consultarPorDocumentoCliente(
 			String numeroDocumentoCliente) {
 
+		//monta SQL para consultar
 		String sql = "SELECT * FROM " + EntidadeVenda.NM_TABELA + " WHERE "
 				+ EntidadeVenda.NM_COL_NumeroDocumentoCliente + " = '" + numeroDocumentoCliente + "'";
 
 		ArrayList<EntidadeVenda> listaRetorno = new ArrayList<EntidadeVenda>();
+		//prepara SQL
 		PreparedStatement stmt = getPreparedStatement(sql);
 
 		try {
+			//executa SQL, recupera o result set e itera a resposta para montar a lista de retorno
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				EntidadeVenda eVenda = new EntidadeVenda();
